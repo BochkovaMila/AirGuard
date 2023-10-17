@@ -14,6 +14,13 @@
 		31D1E1CF2ADE9EBC007995DA /* AirGuardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1CE2ADE9EBC007995DA /* AirGuardTests.swift */; };
 		31D1E1D92ADE9EBC007995DA /* AirGuardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1D82ADE9EBC007995DA /* AirGuardUITests.swift */; };
 		31D1E1DB2ADE9EBC007995DA /* AirGuardUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1DA2ADE9EBC007995DA /* AirGuardUITestsLaunchTests.swift */; };
+		31D1E1E82ADE9FD7007995DA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1E72ADE9FD7007995DA /* NetworkManager.swift */; };
+		31D1E1EA2ADE9FEA007995DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1E92ADE9FEA007995DA /* Constants.swift */; };
+		31D1E1EC2ADEA068007995DA /* AGError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1EB2ADEA068007995DA /* AGError.swift */; };
+		31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */; };
+		31D1E1F02ADEAA54007995DA /* AirGuardLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */; };
+		31D1E1F22ADEB53D007995DA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F12ADEB53D007995DA /* LocationManager.swift */; };
+		31D1E1F42ADEC193007995DA /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F32ADEC193007995DA /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		31D1E1D42ADE9EBC007995DA /* AirGuardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AirGuardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D1E1D82ADE9EBC007995DA /* AirGuardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirGuardUITests.swift; sourceTree = "<group>"; };
 		31D1E1DA2ADE9EBC007995DA /* AirGuardUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirGuardUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		31D1E1E72ADE9FD7007995DA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		31D1E1E92ADE9FEA007995DA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		31D1E1EB2ADEA068007995DA /* AGError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGError.swift; sourceTree = "<group>"; };
+		31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityData.swift; sourceTree = "<group>"; };
+		31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AirGuardLaunch.storyboard; sourceTree = "<group>"; };
+		31D1E1F12ADEB53D007995DA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		31D1E1F32ADEC193007995DA /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +88,7 @@
 		31D1E1B12ADE9EB8007995DA = {
 			isa = PBXGroup;
 			children = (
+				31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */,
 				31D1E1BC2ADE9EB8007995DA /* AirGuard */,
 				31D1E1CD2ADE9EBC007995DA /* AirGuardTests */,
 				31D1E1D72ADE9EBC007995DA /* AirGuardUITests */,
@@ -98,6 +113,12 @@
 				31D1E1BF2ADE9EB8007995DA /* ContentView.swift */,
 				31D1E1C12ADE9EBB007995DA /* Assets.xcassets */,
 				31D1E1C32ADE9EBC007995DA /* Preview Content */,
+				31D1E1E72ADE9FD7007995DA /* NetworkManager.swift */,
+				31D1E1E92ADE9FEA007995DA /* Constants.swift */,
+				31D1E1EB2ADEA068007995DA /* AGError.swift */,
+				31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */,
+				31D1E1F12ADEB53D007995DA /* LocationManager.swift */,
+				31D1E1F32ADEC193007995DA /* ContentViewModel.swift */,
 			);
 			path = AirGuard;
 			sourceTree = "<group>";
@@ -231,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31D1E1F02ADEAA54007995DA /* AirGuardLaunch.storyboard in Resources */,
 				31D1E1C52ADE9EBC007995DA /* Preview Assets.xcassets in Resources */,
 				31D1E1C22ADE9EBB007995DA /* Assets.xcassets in Resources */,
 			);
@@ -257,8 +279,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31D1E1F42ADEC193007995DA /* ContentViewModel.swift in Sources */,
+				31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */,
+				31D1E1E82ADE9FD7007995DA /* NetworkManager.swift in Sources */,
 				31D1E1C02ADE9EB8007995DA /* ContentView.swift in Sources */,
+				31D1E1F22ADEB53D007995DA /* LocationManager.swift in Sources */,
+				31D1E1EC2ADEA068007995DA /* AGError.swift in Sources */,
 				31D1E1BE2ADE9EB8007995DA /* AirGuardApp.swift in Sources */,
+				31D1E1EA2ADE9FEA007995DA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,11 +453,14 @@
 				DEVELOPMENT_TEAM = 24Z8S48QJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AirGuard использует местоположение для определения качества воздуха в вашем регионе.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = AirGuardLaunch.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -454,11 +485,14 @@
 				DEVELOPMENT_TEAM = 24Z8S48QJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AirGuard использует местоположение для определения качества воздуха в вашем регионе.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = AirGuardLaunch.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

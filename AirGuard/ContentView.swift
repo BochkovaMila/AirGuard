@@ -6,19 +6,21 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
+    @StateObject var viewModel: ContentViewModel
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Map(coordinateRegion: $viewModel.locationManager.region, showsUserLocation: true)
+                .edgesIgnoringSafeArea(.all)
+            Text("Air Quality Data: \(viewModel.airQualityData)")
+                .padding()
         }
-        .padding()
+        .onAppear {
+            viewModel.fetchAQData()
+        }
     }
 }
 
-#Preview {
-    ContentView()
-}
