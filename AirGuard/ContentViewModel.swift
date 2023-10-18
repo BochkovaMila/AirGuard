@@ -6,29 +6,86 @@
 //
 
 import SwiftUI
+import MapKit
+
+struct InfoPoint: Identifiable {
+    let id = UUID()
+    var name: String
+    var coordinate: CLLocationCoordinate2D
+    var aqData: AirQualityData?
+}
 
 final class ContentViewModel: ObservableObject {
     
     @ObservedObject var locationManager = LocationManager()
     @Published var airQualityData = ""
+    @Published var searchResults: [InfoPoint] = []
     
-    func fetchAQData() {
-        let latitude = locationManager.region.center.latitude
-        let longitude = locationManager.region.center.longitude
+    func loadAnnotationsByCurrentLocation() {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "places of interest"
+        request.resultTypes = .pointOfInterest
+        request.region = MKCoordinateRegion(
+            center: locationManager.region.center,
+            span: locationManager.region.span
+        )
+        
+        let search = MKLocalSearch(request: request)
+        search.start { response, error in
+            guard let mapItems = response?.mapItems else {
+                if let error = error {
+                    print("Search error: \(error.localizedDescription)")
+                }
+                return
+            }
+            
+            self.convertMapItemsToInfoPoints(mapItems: mapItems) { infoPoints in
+                DispatchQueue.main.async {
+                    self.searchResults = infoPoints
+                }
+            }
+        }
+    }
+    
+    private func convertMapItemsToInfoPoints(mapItems: [MKMapItem], completion: @escaping ([InfoPoint]) -> Void) {
+        var result: [InfoPoint] = []
+        let group = DispatchGroup()
+        
+        for mapItem in mapItems {
+            group.enter()
+            convertMapItemToInfoPoint(mapItem: mapItem) { infoPoint in
+                result.append(infoPoint)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(result)
+        }
+    }
+    
+    private func convertMapItemToInfoPoint(mapItem: MKMapItem, completion: @escaping (InfoPoint) -> Void) {
+        fetchAQData(region: mapItem.placemark.coordinate) { aqData in
+            let infoPoint = InfoPoint(name: mapItem.name ?? "Unknown location", coordinate: mapItem.placemark.coordinate, aqData: aqData)
+            completion(infoPoint)
+        }
+    }
+    
+    private func fetchAQData(region: CLLocationCoordinate2D, completion: @escaping (AirQualityData?) -> Void) {
+        let latitude = region.latitude
+        let longitude = region.longitude
         
         Task {
             do {
                 let aqData = try await NetworkManager.shared.getData(latitude: latitude, longitude: longitude)
-                print(aqData)
-                DispatchQueue.main.async { [self] in
-                    self.airQualityData = "\(aqData.list[0].main.aqi)"
-                }
+                completion(aqData)
             } catch {
                 if let agError = error as? AGError {
                     print(agError)
                 } else {
                     print(error)
                 }
+                completion(nil)
             }
         }
     }
