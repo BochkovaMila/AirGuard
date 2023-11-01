@@ -15,7 +15,7 @@ enum AirQualityParameters: String, Equatable, CaseIterable {
     case PM10 = "PM10"
     case PM2 = "PM2.5"
     case O3 = "O3"
-    case NH3 = "NH3"
+    case CO = "CO"
 
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
