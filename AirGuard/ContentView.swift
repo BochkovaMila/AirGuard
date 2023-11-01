@@ -11,8 +11,8 @@ import CoreLocationUI
 
 struct ContentView: View {
     @StateObject var viewModel: ContentViewModel
-    @State private var selectedParam = "Индекс"
-    let params = ["Индекс", "SO2", "NO2", "PM10", "PM2.5", "03", "CO3"]
+    @State private var selectedParam: AirQualityParameters = .index
+    //@State private var
     
     var body: some View {
         
@@ -25,8 +25,10 @@ struct ContentView: View {
                         ZStack {
                             Circle()
                                 .fill(.green)
-                                .frame(width: 30, height: 30)
-                            Text(String(point.aqData?.list[0].main.aqi ?? -1))
+                                .frame(width: 40, height: 40)
+                            Text(getInfoForSelectedParam(point))
+                                .frame(width: 40, height: 40)
+                                .scaledToFit()
                                 .foregroundStyle(.background)
                         }
                     }
@@ -55,8 +57,8 @@ struct ContentView: View {
         }
         .overlay(alignment: .topTrailing) {
             Picker("Параметр", selection: $selectedParam) {
-                ForEach(params, id: \.self) {
-                    Text($0)
+                ForEach(AirQualityParameters.allCases, id: \.self) {
+                    Text($0.localizedName)
                         .foregroundStyle(.white)
                         .fontWeight(.bold)
                 }
@@ -71,6 +73,43 @@ struct ContentView: View {
             .padding(.trailing, 10)
         }
         
+    }
+    
+    private func getInfoForSelectedParam(_ point: InfoPoint) -> String {
+        switch self.selectedParam {
+        case .index:
+            return String(point.aqData?.list[0].main.aqi ?? -1)
+        case .SO2:
+            if let value = point.aqData?.list[0].components["so2"] as? Double {
+              return String(format: "%.1f", value)
+            }
+            return String(-1)
+        case .NO2:
+            if let value = point.aqData?.list[0].components["no2"] as? Double {
+              return String(format: "%.1f", value)
+            }
+            return String(-1)
+        case .PM10:
+            if let value = point.aqData?.list[0].components["pm10"] as? Double {
+              return String(format: "%.1f", value)
+            }
+            return String(-1)
+        case .PM2:
+            if let value = point.aqData?.list[0].components["pm2_5"] as? Double {
+                return String(format: "%.1f", value)
+            }
+            return String(-1)
+        case .O3:
+            if let value = point.aqData?.list[0].components["o3"] as? Double {
+              return String(format: "%.1f", value)
+            }
+            return String(-1)
+        case .NH3:
+            if let value = point.aqData?.list[0].components["nh3"] as? Double {
+              return String(format: "%.1f", value)
+            }
+            return String(-1)
+        }
     }
 }
 
