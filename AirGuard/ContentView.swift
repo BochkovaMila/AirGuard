@@ -12,8 +12,6 @@ import CoreLocationUI
 struct ContentView: View {
     @StateObject var viewModel: ContentViewModel
     @State private var selectedParam: AirQualityParameters = .index
-    @State private var showMoreInfoOnButtonClick = false
-    @State private var chosenPoint: InfoPoint? = nil
     
     var body: some View {
         
@@ -21,8 +19,7 @@ struct ContentView: View {
             Map(coordinateRegion: $viewModel.locationManager.region, showsUserLocation: true, annotationItems: viewModel.searchResults) { point in
                 MapAnnotation(coordinate: point.coordinate) {
                     Button(action: {
-                        chosenPoint = point
-                        showMoreInfoOnButtonClick.toggle()
+                        // TODO: - navigate to sub view
                     }) {
                         ZStack {
                             Circle()
@@ -36,7 +33,6 @@ struct ContentView: View {
                     }
                 }
             }
-            .ignoresSafeArea()
             .onAppear {
                 viewModel.loadAnnotationsByCurrentLocation()
             }
@@ -75,23 +71,7 @@ struct ContentView: View {
             .padding(.top, 20)
             .padding(.trailing, 10)
         }
-        .safeAreaInset(edge: .bottom) {
-            HStack {
-                Spacer()
-                VStack(alignment: .leading) {
-                    if let chosenPoint = chosenPoint {
-                        Text("Индекс качества воздуха: \((chosenPoint.aqData?.list[0].main.aqi) ?? -1)")
-                        HStack {
-                            Text("-")
-                        }
-                    }
-                }
-                .padding(.top)
-                Spacer()
-            }
-            .background(.ultraThinMaterial)
-            .hidden(showMoreInfoOnButtonClick)
-        }
+        
     }
     
     private func getColorForSelectedParam(_ point: InfoPoint) -> Color {
@@ -262,4 +242,3 @@ struct ContentView: View {
         }
     }
 }
-
