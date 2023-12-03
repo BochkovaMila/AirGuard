@@ -12,6 +12,8 @@ import CoreLocationUI
 struct ContentView: View {
     @StateObject var viewModel: ContentViewModel
     @State private var selectedParam: AirQualityParameters = .index
+    @State private var showingDetails = false
+    @State private var pinLocation :CLLocationCoordinate2D? = nil
     
     var body: some View {
         
@@ -19,7 +21,7 @@ struct ContentView: View {
             Map(coordinateRegion: $viewModel.locationManager.region, showsUserLocation: true, annotationItems: viewModel.searchResults) { point in
                 MapAnnotation(coordinate: point.coordinate) {
                     Button(action: {
-                        // TODO: - navigate to sub view
+                        showingDetails.toggle()
                     }) {
                         ZStack {
                             Circle()
@@ -31,6 +33,10 @@ struct ContentView: View {
                                 .foregroundStyle(.background)
                         }
                     }
+                    .sheet(isPresented: $showingDetails) {
+                        DetailedInfoView(chosenPoint: point)
+                            .presentationDetents([.height(300)])
+                    }
                 }
             }
             .onAppear {
@@ -39,39 +45,37 @@ struct ContentView: View {
             .onReceive(viewModel.locationManager.$region.debounce(for: .milliseconds(500), scheduler: RunLoop.main)) { _ in
                 viewModel.loadAnnotationsByCurrentLocation()
             }
-            
-            LocationButton {
-                viewModel.locationManager.requestLocation()
-            }
-            .frame(width: 60, height: 60)
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(UIColor.systemBackground))
-              )
-            .labelStyle(.iconOnly)
-            .symbolVariant(.fill)
-            .foregroundColor(Color(UIColor.systemBackground))
-            .padding(.top, 100)
-            .padding(.trailing, 10)
-        }
-        .overlay(alignment: .topTrailing) {
-            Picker("Параметр", selection: $selectedParam) {
-                ForEach(AirQualityParameters.allCases, id: \.self) {
-                    Text($0.localizedName)
-                        .foregroundStyle(.white)
-                        .fontWeight(.bold)
+            VStack(alignment: .trailing, spacing: 15) {
+                Picker("Параметр", selection: $selectedParam) {
+                    ForEach(AirQualityParameters.allCases, id: \.self) {
+                        Text($0.localizedName)
+                            .foregroundStyle(.white)
+                            .fontWeight(.bold)
+                    }
                 }
+                .pickerStyle(.menu)
+                .frame(width: 120, height: 60)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(UIColor.systemBackground))
+                  )
+                .padding(.top, 20)
+                .padding(.trailing, 10)
+                
+                LocationButton {
+                    viewModel.locationManager.requestLocation()
+                }
+                .frame(width: 60, height: 60)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(Color(UIColor.systemBackground))
+                )
+                .labelStyle(.iconOnly)
+                .symbolVariant(.fill)
+                .foregroundColor(Color(UIColor.systemBackground))
+                .padding(.trailing, 10)
             }
-            .pickerStyle(.menu)
-            .frame(width: 120, height: 60)
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(UIColor.systemBackground))
-              )
-            .padding(.top, 20)
-            .padding(.trailing, 10)
         }
-        
     }
     
     private func getColorForSelectedParam(_ point: InfoPoint) -> Color {
