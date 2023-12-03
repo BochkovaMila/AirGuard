@@ -20,6 +20,11 @@ final class ContentViewModel: ObservableObject {
     @ObservedObject var locationManager = LocationManager()
     @Published var airQualityData = ""
     @Published var searchResults: [InfoPoint] = []
+    @Published var address: String?
+    
+    init() {
+        loadAnnotationsByCurrentLocation()
+    }
     
     func loadAnnotationsByCurrentLocation() {
         let request = MKLocalSearch.Request()

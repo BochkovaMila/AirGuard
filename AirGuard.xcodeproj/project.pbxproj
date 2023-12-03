@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3124C3612AF27B33005C3999 /* AirQualityParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124C3602AF27B33005C3999 /* AirQualityParameters.swift */; };
+		31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB90712B1C9886004F2B70 /* View+Extension.swift */; };
 		31D1E1BE2ADE9EB8007995DA /* AirGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1BD2ADE9EB8007995DA /* AirGuardApp.swift */; };
 		31D1E1C02ADE9EB8007995DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1BF2ADE9EB8007995DA /* ContentView.swift */; };
 		31D1E1C22ADE9EBB007995DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31D1E1C12ADE9EBB007995DA /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		3124C3602AF27B33005C3999 /* AirQualityParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityParameters.swift; sourceTree = "<group>"; };
+		31BB90712B1C9886004F2B70 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		31D1E1BA2ADE9EB8007995DA /* AirGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31D1E1BD2ADE9EB8007995DA /* AirGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirGuardApp.swift; sourceTree = "<group>"; };
 		31D1E1BF2ADE9EB8007995DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				31D1E1F12ADEB53D007995DA /* LocationManager.swift */,
 				31D1E1F32ADEC193007995DA /* ContentViewModel.swift */,
 				3124C3602AF27B33005C3999 /* AirQualityParameters.swift */,
+				31BB90712B1C9886004F2B70 /* View+Extension.swift */,
 			);
 			path = AirGuard;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				31D1E1F42ADEC193007995DA /* ContentViewModel.swift in Sources */,
 				31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */,
+				31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */,
 				31D1E1E82ADE9FD7007995DA /* NetworkManager.swift in Sources */,
 				31D1E1C02ADE9EB8007995DA /* ContentView.swift in Sources */,
 				3124C3612AF27B33005C3999 /* AirQualityParameters.swift in Sources */,
