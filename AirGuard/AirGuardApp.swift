@@ -11,7 +11,7 @@ import SwiftUI
 struct AirGuardApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ContentViewModel())
+            ContentView()
         }
     }
 }

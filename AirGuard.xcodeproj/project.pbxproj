@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3124C3612AF27B33005C3999 /* AirQualityParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124C3602AF27B33005C3999 /* AirQualityParameters.swift */; };
+		31A82A0B2B4ED2BB0053425C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A0A2B4ED2BB0053425C /* MapView.swift */; };
+		31A82A0F2B501C660053425C /* CurrentDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A0E2B501C660053425C /* CurrentDataView.swift */; };
+		31A82A112B501CD00053425C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A102B501CD00053425C /* StatisticsView.swift */; };
+		31A82A132B501CEB0053425C /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A122B501CEB0053425C /* ForecastView.swift */; };
+		31A82A152B501CFE0053425C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A142B501CFE0053425C /* SettingsView.swift */; };
 		31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB90712B1C9886004F2B70 /* View+Extension.swift */; };
 		31BB90742B1CB93E004F2B70 /* DetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */; };
 		31D1E1BE2ADE9EB8007995DA /* AirGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1BD2ADE9EB8007995DA /* AirGuardApp.swift */; };
@@ -23,7 +28,7 @@
 		31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */; };
 		31D1E1F02ADEAA54007995DA /* AirGuardLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */; };
 		31D1E1F22ADEB53D007995DA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F12ADEB53D007995DA /* LocationManager.swift */; };
-		31D1E1F42ADEC193007995DA /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F32ADEC193007995DA /* ContentViewModel.swift */; };
+		31D1E1F42ADEC193007995DA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F32ADEC193007995DA /* MapViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +50,11 @@
 
 /* Begin PBXFileReference section */
 		3124C3602AF27B33005C3999 /* AirQualityParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityParameters.swift; sourceTree = "<group>"; };
+		31A82A0A2B4ED2BB0053425C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		31A82A0E2B501C660053425C /* CurrentDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataView.swift; sourceTree = "<group>"; };
+		31A82A102B501CD00053425C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		31A82A122B501CEB0053425C /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
+		31A82A142B501CFE0053425C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		31BB90712B1C9886004F2B70 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoView.swift; sourceTree = "<group>"; };
 		31D1E1BA2ADE9EB8007995DA /* AirGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,7 +73,7 @@
 		31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityData.swift; sourceTree = "<group>"; };
 		31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AirGuardLaunch.storyboard; sourceTree = "<group>"; };
 		31D1E1F12ADEB53D007995DA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		31D1E1F32ADEC193007995DA /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		31D1E1F32ADEC193007995DA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +134,15 @@
 				31D1E1EB2ADEA068007995DA /* AGError.swift */,
 				31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */,
 				31D1E1F12ADEB53D007995DA /* LocationManager.swift */,
-				31D1E1F32ADEC193007995DA /* ContentViewModel.swift */,
+				31D1E1F32ADEC193007995DA /* MapViewModel.swift */,
 				3124C3602AF27B33005C3999 /* AirQualityParameters.swift */,
 				31BB90712B1C9886004F2B70 /* View+Extension.swift */,
 				31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */,
+				31A82A0A2B4ED2BB0053425C /* MapView.swift */,
+				31A82A0E2B501C660053425C /* CurrentDataView.swift */,
+				31A82A102B501CD00053425C /* StatisticsView.swift */,
+				31A82A122B501CEB0053425C /* ForecastView.swift */,
+				31A82A142B501CFE0053425C /* SettingsView.swift */,
 			);
 			path = AirGuard;
 			sourceTree = "<group>";
@@ -288,14 +303,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31D1E1F42ADEC193007995DA /* ContentViewModel.swift in Sources */,
+				31D1E1F42ADEC193007995DA /* MapViewModel.swift in Sources */,
+				31A82A0B2B4ED2BB0053425C /* MapView.swift in Sources */,
 				31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */,
+				31A82A112B501CD00053425C /* StatisticsView.swift in Sources */,
 				31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */,
 				31D1E1E82ADE9FD7007995DA /* NetworkManager.swift in Sources */,
 				31BB90742B1CB93E004F2B70 /* DetailedInfoView.swift in Sources */,
 				31D1E1C02ADE9EB8007995DA /* ContentView.swift in Sources */,
 				3124C3612AF27B33005C3999 /* AirQualityParameters.swift in Sources */,
+				31A82A152B501CFE0053425C /* SettingsView.swift in Sources */,
 				31D1E1F22ADEB53D007995DA /* LocationManager.swift in Sources */,
+				31A82A0F2B501C660053425C /* CurrentDataView.swift in Sources */,
+				31A82A132B501CEB0053425C /* ForecastView.swift in Sources */,
 				31D1E1EC2ADEA068007995DA /* AGError.swift in Sources */,
 				31D1E1BE2ADE9EB8007995DA /* AirGuardApp.swift in Sources */,
 				31D1E1EA2ADE9FEA007995DA /* Constants.swift in Sources */,

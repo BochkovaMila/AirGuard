@@ -15,7 +15,7 @@ struct InfoPoint: Identifiable {
     var aqData: AirQualityData?
 }
 
-final class ContentViewModel: ObservableObject {
+final class MapViewModel: ObservableObject {
     
     @ObservedObject var locationManager = LocationManager()
     @Published var airQualityData = ""
