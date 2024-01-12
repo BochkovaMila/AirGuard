@@ -94,7 +94,7 @@ struct MapView: View {
                 case 4:
                     return Color.red
                 case 5:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
