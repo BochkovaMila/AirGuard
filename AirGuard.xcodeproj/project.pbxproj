@@ -14,6 +14,7 @@
 		31A82A132B501CEB0053425C /* ForecastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A122B501CEB0053425C /* ForecastView.swift */; };
 		31A82A152B501CFE0053425C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A142B501CFE0053425C /* SettingsView.swift */; };
 		31A82A172B516CB70053425C /* CrescentProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A162B516CB70053425C /* CrescentProgressView.swift */; };
+		31A82A192B55445C0053425C /* VerticalProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A182B55445B0053425C /* VerticalProgressView.swift */; };
 		31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB90712B1C9886004F2B70 /* View+Extension.swift */; };
 		31BB90742B1CB93E004F2B70 /* DetailedInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */; };
 		31D1E1BE2ADE9EB8007995DA /* AirGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1BD2ADE9EB8007995DA /* AirGuardApp.swift */; };
@@ -57,6 +58,7 @@
 		31A82A122B501CEB0053425C /* ForecastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastView.swift; sourceTree = "<group>"; };
 		31A82A142B501CFE0053425C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		31A82A162B516CB70053425C /* CrescentProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrescentProgressView.swift; sourceTree = "<group>"; };
+		31A82A182B55445B0053425C /* VerticalProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalProgressView.swift; sourceTree = "<group>"; };
 		31BB90712B1C9886004F2B70 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoView.swift; sourceTree = "<group>"; };
 		31D1E1BA2ADE9EB8007995DA /* AirGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AirGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 				31A82A122B501CEB0053425C /* ForecastView.swift */,
 				31A82A142B501CFE0053425C /* SettingsView.swift */,
 				31A82A162B516CB70053425C /* CrescentProgressView.swift */,
+				31A82A182B55445B0053425C /* VerticalProgressView.swift */,
 			);
 			path = AirGuard;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				31D1E1F42ADEC193007995DA /* MapViewModel.swift in Sources */,
 				31A82A0B2B4ED2BB0053425C /* MapView.swift in Sources */,
 				31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */,
+				31A82A192B55445C0053425C /* VerticalProgressView.swift in Sources */,
 				31A82A112B501CD00053425C /* StatisticsView.swift in Sources */,
 				31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */,
 				31D1E1E82ADE9FD7007995DA /* NetworkManager.swift in Sources */,
