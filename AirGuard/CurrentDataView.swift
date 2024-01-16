@@ -9,49 +9,94 @@ import SwiftUI
 
 struct CurrentDataView: View {
     var body: some View {
-        VStack(spacing: 15) {
-            Text("Моя локация")
-                .font(Font.system(size: 38))
-                .bold()
-                .padding(.bottom, 20)
-            ZStack {
-                CrescentProgressView(progress: 0.1)
-                    .frame(width: 200, height: 200)
-                VStack {
-                    HStack {
-                        Text("-1")
-                            .font(Font.system(size: 28))
-                            .bold()
-                        Text("AQI")
-                    }
-                    HStack {
-                        Text("😄")
-                        Text("Отлично")
+        ScrollView {
+            
+            ZStack(alignment: .topTrailing) {
+                Text("Текущее качество воздуха")
+                    .font(.largeTitle)
+                    .padding(.all, 15)
+                Button {
+                    // show more information about meaning of aq data params
+                } label: {
+                    Image(systemName: "questionmark.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundStyle(.black)
+                        .frame(width: 20, height: 20)
+                        .padding(.all, 2)
+                }
+            }
+            
+            VStack {
+                ZStack(alignment: .topTrailing) {
+                    Text("Моя локация")
+                        .font(Font.system(size: 34))
+                        .padding(.all, 20)
+                    Button {
+                        // change location
+                    } label: {
+                        Image(systemName: "pencil")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundStyle(.black)
+                            .frame(width: 20, height: 20)
+                            .padding(.all, 5)
                     }
                 }
-                .padding(.top, -30)
+                
+                ZStack {
+                    CrescentProgressView(progress: 0.1)
+                        .frame(width: 200, height: 200)
+                    VStack {
+                        HStack {
+                            Text("-1")
+                                .font(Font.system(size: 28))
+                                .bold()
+                            Text("AQI")
+                        }
+                        HStack {
+                            Text("😄")
+                            Text("Отлично")
+                        }
+                    }
+                    .padding(.top, -30)
+                }
+                
+                Text("Показатели:")
+                    .font(Font.system(size: 28))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.all, 20)
+                
+                Group {
+                    HStack(spacing: 10) {
+                        Group {
+                            VerticalDataView(param: "SO2", value: 1.1)
+                            VerticalDataView(param: "NO2", value: 3.6)
+                        }
+                        .padding(.horizontal, 15)
+                    }
+                    
+                    HStack(spacing: 10) {
+                        Group {
+                            VerticalDataView(param: "PM10", value: 1.4)
+                            VerticalDataView(param: "PM2.5", value: 0.5)
+                        }
+                        .padding(.horizontal, 15)
+                    }
+                    
+                    HStack(spacing: 10) {
+                        Group {
+                            VerticalDataView(param: "O3", value: 45.8)
+                            VerticalDataView(param: "CO", value: 283)
+                        }
+                        .padding(.horizontal, 15)
+                    }
+                }
+                .frame(height: 130)
+                .padding(.horizontal, 20)
+                .padding(.vertical, 15)
+                Spacer()
             }
-            
-            HStack(spacing: 10) {
-                VerticalDataView(param: "SO2", value: 1.1)
-                VerticalDataView(param: "NO2", value: 3.6)
-            }
-            .frame(width: 250, height: 150)
-            .padding(.leading, 20)
-            
-            HStack(spacing: 10) {
-                VerticalDataView(param: "PM10", value: 1.4)
-                VerticalDataView(param: "PM2.5", value: 0.5)
-            }
-            .frame(width: 250, height: 150)
-            .padding(.leading, 20)
-            
-            HStack(spacing: 10) {
-                VerticalDataView(param: "O3", value: 45.8)
-                VerticalDataView(param: "CO", value: 283)
-            }
-            .frame(width: 250, height: 150)
-            .padding(.leading, 20)
         }
     }
 }
@@ -62,16 +107,21 @@ struct VerticalDataView: View {
     let value: Double
     
     var body: some View {
-        HStack(spacing: 10) {
+        HStack {
             VerticalProgressView(progress: 0.3)
+                .frame(width: 25)
+                .padding(.trailing, 3)
             VStack(alignment: .leading) {
                 Text("\(param) (μg/m3)")
-                    .padding(.bottom, 2)
-                Text("\(String(format: "%.2f", value))")
+                    .padding(.vertical, 2)
+                Text("\(String(format: "%.1f", value))")
                     .font(Font.system(size: 28))
                     .bold()
+                Spacer()
             }
             .padding(.trailing, 20)
+            .frame(width: 125)
+            Spacer()
         }
     }
     
