@@ -27,6 +27,7 @@ struct VerticalProgressView: View {
                     )
                     .foregroundColor(.pink)
                     .clipShape(Capsule())
+                    .animation(.easeInOut, value: progress)
             }
         }
     }

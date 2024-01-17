@@ -33,7 +33,7 @@ struct CrescentProgressView: View {
                     )
                 )
                 .rotationEffect(.degrees(-180))
-                .animation(.easeOut, value: progress)
+                .animation(.easeInOut, value: progress)
         }
     }
 }

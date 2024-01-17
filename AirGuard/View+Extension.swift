@@ -12,3 +12,13 @@ extension View {
         opacity(shouldHide ? 0 : 1)
     }
 }
+
+extension View {
+    func animate(using animation: Animation = .easeInOut(duration: 1), _ action: @escaping () -> Void) -> some View {
+        onAppear {
+            withAnimation(animation) {
+                action()
+            }
+        }
+    }
+}

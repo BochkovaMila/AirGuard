@@ -52,7 +52,7 @@ struct CurrentDataView: View {
                             Text("-1")
                                 .font(Font.system(size: 28))
                                 .bold()
-                            Text("AQI")
+                            Text(AirQualityParameters.index.rawValue)
                         }
                         HStack {
                             Text("😄")
@@ -65,29 +65,30 @@ struct CurrentDataView: View {
                 Text("Показатели:")
                     .font(Font.system(size: 28))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.all, 20)
+                    .padding(.leading, 40)
+                    .padding(.top, -30)
                 
                 Group {
                     HStack(spacing: 10) {
                         Group {
-                            VerticalDataView(param: "SO2", value: 1.1)
-                            VerticalDataView(param: "NO2", value: 3.6)
+                            VerticalDataView(param: AirQualityParameters.SO2.rawValue, value: 1.1)
+                            VerticalDataView(param: AirQualityParameters.NO2.rawValue, value: 3.6)
                         }
                         .padding(.horizontal, 15)
                     }
                     
                     HStack(spacing: 10) {
                         Group {
-                            VerticalDataView(param: "PM10", value: 1.4)
-                            VerticalDataView(param: "PM2.5", value: 0.5)
+                            VerticalDataView(param: AirQualityParameters.PM10.rawValue, value: 1.4)
+                            VerticalDataView(param: AirQualityParameters.PM2.rawValue, value: 0.5)
                         }
                         .padding(.horizontal, 15)
                     }
                     
                     HStack(spacing: 10) {
                         Group {
-                            VerticalDataView(param: "O3", value: 45.8)
-                            VerticalDataView(param: "CO", value: 283)
+                            VerticalDataView(param: AirQualityParameters.O3.rawValue, value: 45.8)
+                            VerticalDataView(param: AirQualityParameters.CO.rawValue, value: 283)
                         }
                         .padding(.horizontal, 15)
                     }
@@ -95,8 +96,11 @@ struct CurrentDataView: View {
                 .frame(height: 130)
                 .padding(.horizontal, 20)
                 .padding(.vertical, 15)
+                
                 Spacer()
             }
+            
+            Spacer()
         }
     }
 }
