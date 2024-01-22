@@ -78,6 +78,57 @@ final class LocationManager: NSObject, ObservableObject {
             break
         }
     }
+    
+    func getCoordinate(from address: String) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if error != nil {
+                print("Failed to retrieve location")
+                return
+            }
+            
+            var location: CLLocation?
+            
+            if let placemarks = placemarks, placemarks.count > 0 {
+                location = placemarks.first?.location
+            }
+            
+            if let location = location {
+                let coordinate = location.coordinate
+                print("\nlat: \(coordinate.latitude), long: \(coordinate.longitude)")
+//                DispatchQueue.main.async {
+//                    self.region = MKCoordinateRegion(
+//                        center: location.coordinate,
+//                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+//                    )
+//                }
+            }
+            else
+            {
+                print("No Matching Location Found")
+            }
+        })
+    }
+    
+    func lookUpLocation(completion: @escaping (String?) -> Void) {
+        let geocoder = CLGeocoder()
+        let location = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
+            guard error != nil else {
+                print("Failed to retrieve address")
+                completion(nil)
+                return
+            }
+            
+            guard let placemarks = placemarks, let placemark = placemarks.first else {
+                print("No Matching Address Found")
+                completion(nil)
+                return
+            }
+            print("address: \(placemark.address!)")
+            completion(placemark.address!)
+        }
+    }
 }
 
 extension LocationManager: CLLocationManagerDelegate {
@@ -103,5 +154,30 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
     
-    
+}
+
+extension CLPlacemark {
+
+    var address: String? {
+        if let name = name {
+            var result = name
+
+            if let street = thoroughfare {
+                result += ", \(street)"
+            }
+
+            if let city = locality {
+                result += ", \(city)"
+            }
+
+            if let country = country {
+                result += ", \(country)"
+            }
+
+            return result
+        }
+
+        return nil
+    }
+
 }

@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Group {
-                CurrentDataView()
+                CurrentDataView(viewModel: CurrentDataViewModel())
                     .tabItem {
                         Label("Сегодня", systemImage: "chart.xyaxis.line")
                             .foregroundStyle(.black)

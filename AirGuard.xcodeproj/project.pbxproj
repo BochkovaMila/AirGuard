@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3124C3612AF27B33005C3999 /* AirQualityParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124C3602AF27B33005C3999 /* AirQualityParameters.swift */; };
+		319CBBDD2B5EA4AA0084E8EC /* LocationSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319CBBDC2B5EA4AA0084E8EC /* LocationSearchViewModel.swift */; };
 		31A82A0B2B4ED2BB0053425C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A0A2B4ED2BB0053425C /* MapView.swift */; };
 		31A82A0F2B501C660053425C /* CurrentDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A0E2B501C660053425C /* CurrentDataView.swift */; };
 		31A82A112B501CD00053425C /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A82A102B501CD00053425C /* StatisticsView.swift */; };
@@ -31,6 +32,8 @@
 		31D1E1F02ADEAA54007995DA /* AirGuardLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */; };
 		31D1E1F22ADEB53D007995DA /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F12ADEB53D007995DA /* LocationManager.swift */; };
 		31D1E1F42ADEC193007995DA /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D1E1F32ADEC193007995DA /* MapViewModel.swift */; };
+		31EA32902B57ED5A00EEF51F /* CurrentDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EA328F2B57ED5A00EEF51F /* CurrentDataViewModel.swift */; };
+		31EA32942B58002900EEF51F /* LocationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31EA32932B58002900EEF51F /* LocationSearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		3124C3602AF27B33005C3999 /* AirQualityParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityParameters.swift; sourceTree = "<group>"; };
+		319CBBDC2B5EA4AA0084E8EC /* LocationSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewModel.swift; sourceTree = "<group>"; };
 		31A82A0A2B4ED2BB0053425C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		31A82A0E2B501C660053425C /* CurrentDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataView.swift; sourceTree = "<group>"; };
 		31A82A102B501CD00053425C /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 		31D1E1EF2ADEAA54007995DA /* AirGuardLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AirGuardLaunch.storyboard; sourceTree = "<group>"; };
 		31D1E1F12ADEB53D007995DA /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		31D1E1F32ADEC193007995DA /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		31EA328F2B57ED5A00EEF51F /* CurrentDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentDataViewModel.swift; sourceTree = "<group>"; };
+		31EA32932B58002900EEF51F /* LocationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,9 @@
 				31A82A102B501CD00053425C /* StatisticsView.swift */,
 				31A82A122B501CEB0053425C /* ForecastView.swift */,
 				31A82A142B501CFE0053425C /* SettingsView.swift */,
+				31EA328F2B57ED5A00EEF51F /* CurrentDataViewModel.swift */,
+				31EA32932B58002900EEF51F /* LocationSearchView.swift */,
+				319CBBDC2B5EA4AA0084E8EC /* LocationSearchViewModel.swift */,
 			);
 			path = AirGuard;
 			sourceTree = "<group>";
@@ -314,6 +323,7 @@
 				31D1E1EE2ADEA08A007995DA /* AirQualityData.swift in Sources */,
 				31A82A192B55445C0053425C /* VerticalProgressView.swift in Sources */,
 				31A82A112B501CD00053425C /* StatisticsView.swift in Sources */,
+				319CBBDD2B5EA4AA0084E8EC /* LocationSearchViewModel.swift in Sources */,
 				31BB90722B1C9886004F2B70 /* View+Extension.swift in Sources */,
 				31D1E1E82ADE9FD7007995DA /* NetworkManager.swift in Sources */,
 				31BB90742B1CB93E004F2B70 /* DetailedInfoView.swift in Sources */,
@@ -326,6 +336,8 @@
 				31D1E1EC2ADEA068007995DA /* AGError.swift in Sources */,
 				31A82A172B516CB70053425C /* CrescentProgressView.swift in Sources */,
 				31D1E1BE2ADE9EB8007995DA /* AirGuardApp.swift in Sources */,
+				31EA32902B57ED5A00EEF51F /* CurrentDataViewModel.swift in Sources */,
+				31EA32942B58002900EEF51F /* LocationSearchView.swift in Sources */,
 				31D1E1EA2ADE9FEA007995DA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
