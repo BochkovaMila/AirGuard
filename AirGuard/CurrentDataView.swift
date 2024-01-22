@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrentDataView: View {
     
+    @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = CurrentDataViewModel()
     @State var isChangeLocationLinkActive = false
     
@@ -31,7 +32,7 @@ struct CurrentDataView: View {
                             Image(systemName: "pencil")
                                 .resizable()
                                 .scaledToFit()
-                                .foregroundStyle(.black)
+                                .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                                 .frame(width: 20, height: 20)
                                 .padding(.all, 5)
                         }
@@ -101,7 +102,7 @@ struct CurrentDataView: View {
                     // show more information about meaning of aq data params
                 } label: {
                     Image(systemName: "questionmark.circle")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
