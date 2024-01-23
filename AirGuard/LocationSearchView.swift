@@ -15,46 +15,53 @@ struct LocationSearchView: View {
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 0) {
-            
-            TextField("Введите местоположение", text: $viewModel.searchableText)
-                .padding()
-                .autocorrectionDisabled()
-                .focused($isFocusedTextField)
-                .font(.title)
-                .onReceive(
-                    viewModel.$searchableText.debounce(
-                        for: .seconds(1),
-                        scheduler: DispatchQueue.main
-                    )
-                ) {
-                    viewModel.searchAddress($0)
-                }
-                .background(Color.init(uiColor: .systemBackground))
-                .overlay {
-                    ClearButton(text: $viewModel.searchableText)
-                        .padding(.trailing)
-                        .padding(.top, 8)
-                }
-                .onAppear {
-                    isFocusedTextField = true
-                }
-            
-            
-            VStack {
-                ForEach(viewModel.results) { address in
-                    VStack(alignment: .leading) {
-                        Text(address.title)
-                        Text(address.subtitle)
-                            .font(.caption)
+        VStack(alignment: .leading, spacing: 2) {
+            HStack {
+                Image(systemName: "magnifyingglass")
+                
+                TextField("Введите местоположение", text: $viewModel.searchableText)
+                    .autocorrectionDisabled()
+                    .focused($isFocusedTextField)
+                    .font(.title3)
+                    .onReceive(
+                        viewModel.$searchableText.debounce(
+                            for: .seconds(1),
+                            scheduler: DispatchQueue.main
+                        )
+                    ) {
+                        viewModel.searchAddress($0)
                     }
-                    .padding(.bottom, 2)
-                }
+                    .overlay {
+                        ClearButton(text: $viewModel.searchableText)
+                            .padding(.trailing)
+                    }
+                    .onAppear {
+                        isFocusedTextField = true
+                    }
             }
+            .padding(.all, 5)
+            .background(Color(uiColor: .systemGray6))
+            .cornerRadius(50)
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach(viewModel.results) { address in
+                        VStack(alignment: .leading) {
+                            Text(address.title)
+                            Text(address.subtitle)
+                                .font(.caption)
+                        }
+                        .padding(.all, 2)
+                        Divider()
+                    }
+                }
+                .padding(.horizontal, 2)
+            }
+            .padding(.top, 5)
         }
-        .background(backgroundColor)
-        .edgesIgnoringSafeArea(.bottom)
-        
+        .navigationBarTitle("Изменить местоположение")
+        .padding()
+        Spacer()
     }
     
     var backgroundColor: Color = Color.init(uiColor: .systemGray6)
@@ -72,7 +79,7 @@ struct ClearButton: View {
                     text = ""
                 } label: {
                     Image(systemName: "multiply.circle.fill")
-                        .foregroundColor(Color(red: 0.7, green: 0.7, blue: 0.7))
+                        .foregroundColor(Color.black)
                 }
                 .foregroundColor(.secondary)
             }
