@@ -81,7 +81,7 @@ final class LocationManager: NSObject, ObservableObject {
     
     func getCoordinate(from address: String) {
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
             if error != nil {
                 print("Failed to retrieve location")
                 return
@@ -95,38 +95,33 @@ final class LocationManager: NSObject, ObservableObject {
             
             if let location = location {
                 let coordinate = location.coordinate
-                print("\nlat: \(coordinate.latitude), long: \(coordinate.longitude)")
-//                DispatchQueue.main.async {
-//                    self.region = MKCoordinateRegion(
-//                        center: location.coordinate,
-//                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-//                    )
-//                }
+                DispatchQueue.main.async {
+                    self.region = MKCoordinateRegion(
+                        center: location.coordinate,
+                        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                    )
+                }
             }
             else
             {
                 print("No Matching Location Found")
             }
-        })
+        }
     }
     
     func lookUpLocation(completion: @escaping (String?) -> Void) {
         let geocoder = CLGeocoder()
-        let location = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) -> Void in
-            guard error != nil else {
-                print("Failed to retrieve address")
+        print(region.center.latitude)
+        let currentLocation = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
+        
+        geocoder.reverseGeocodeLocation(currentLocation, preferredLocale: Locale(components: Locale.Components(languageCode: "ru"))) { (placemarks, error) in
+            guard let placemarks = placemarks,
+                  let location = placemarks.first?.locality else {
                 completion(nil)
                 return
             }
-            
-            guard let placemarks = placemarks, let placemark = placemarks.first else {
-                print("No Matching Address Found")
-                completion(nil)
-                return
-            }
-            print("address: \(placemark.address!)")
-            completion(placemark.address!)
+            print("Location: \(location)")
+            completion(location)
         }
     }
 }

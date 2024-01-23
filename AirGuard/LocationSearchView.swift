@@ -13,6 +13,14 @@ struct LocationSearchView: View {
     @StateObject var viewModel: LocationSearchViewModel
     @FocusState private var isFocusedTextField: Bool
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.colorScheme) var colorScheme
+    
+    @State private var showAlert = false
+    @State var chosenLocation: SearchAddressResult? = nil
+    
+    var onDismiss: (SearchAddressResult) -> Void
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 2) {
@@ -46,11 +54,17 @@ struct LocationSearchView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(viewModel.results) { address in
-                        VStack(alignment: .leading) {
-                            Text(address.title)
-                            Text(address.subtitle)
-                                .font(.caption)
+                        Button {
+                            showAlert = true
+                            chosenLocation = address
+                        } label: {
+                            VStack(alignment: .leading) {
+                                Text(address.title)
+                                Text(address.subtitle)
+                                    .font(.caption)
+                            }
                         }
+                        .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                         .padding(.all, 2)
                         Divider()
                     }
@@ -58,6 +72,30 @@ struct LocationSearchView: View {
                 .padding(.horizontal, 2)
             }
             .padding(.top, 5)
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Изменить местоположение"),
+                message: Text("Вы уверены, что хотите изменить ваше местоположение?"),
+                primaryButton: .cancel(
+                    Text("ОК"),
+                    action: {
+                        if let location = chosenLocation {
+                            onDismiss(location)
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                ),
+                secondaryButton: .destructive(
+                    Text("Закрыть"),
+                    action: {
+                        showAlert = false
+                        chosenLocation = nil
+                    }
+                )
+            )
         }
         .navigationBarTitle("Изменить местоположение")
         .padding()

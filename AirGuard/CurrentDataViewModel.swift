@@ -8,6 +8,12 @@
 import SwiftUI
 import CoreLocation
 
+struct AddressLocation {
+    var title: String
+    var latitude: Double
+    var longitude: Double
+}
+
 final class CurrentDataViewModel: ObservableObject {
     
     @ObservedObject var locationManager = LocationManager()
@@ -20,7 +26,6 @@ final class CurrentDataViewModel: ObservableObject {
         locationManager.lookUpLocation { address in
             self.addressString = address ?? "Москва"
             self.objectWillChange.send()
-            print("Address: \(self.addressString)")
         }
     }
 }

@@ -106,7 +106,10 @@ struct CurrentDataView: View {
                 }
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
-                LocationSearchView(viewModel: LocationSearchViewModel())
+                LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
+                    self.viewModel.addressString = newValue.title
+                    // TODO: - get lat & lon, update AQ
+                })
             }
         }
     }

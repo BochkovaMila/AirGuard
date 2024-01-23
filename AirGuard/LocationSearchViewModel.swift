@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 struct SearchAddressResult: Identifiable, Decodable {
     var id = UUID()
@@ -18,6 +19,8 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     
     @Published var results: Array<SearchAddressResult> = []
     @Published var searchableText = ""
+    
+    @ObservedObject var locationManager = LocationManager()
 
     private lazy var localSearchCompleter: MKLocalSearchCompleter = {
         let completer = MKLocalSearchCompleter()
@@ -28,6 +31,11 @@ class LocationSearchViewModel: NSObject, ObservableObject {
     func searchAddress(_ searchableText: String) {
         guard searchableText.isEmpty == false else { return }
         localSearchCompleter.queryFragment = searchableText
+    }
+    
+    func changeLocation(to newAddress: SearchAddressResult) {
+        let addressString = newAddress.title + newAddress.subtitle
+        locationManager.getCoordinate(from: addressString)
     }
 }
 
