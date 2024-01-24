@@ -112,7 +112,7 @@ struct MapView: View {
                 case 250..<350:
                     return Color.red
                 case 350...Int.max:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
@@ -130,7 +130,7 @@ struct MapView: View {
                 case 150..<200:
                     return Color.red
                 case 200...Int.max:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
@@ -148,7 +148,7 @@ struct MapView: View {
                 case 100..<200:
                     return Color.red
                 case 200...Int.max:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
@@ -166,7 +166,7 @@ struct MapView: View {
                 case 50..<75:
                     return Color.red
                 case 75...Int.max:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
@@ -184,7 +184,7 @@ struct MapView: View {
                 case 140..<180:
                     return Color.red
                 case 180...Int.max:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
@@ -202,7 +202,7 @@ struct MapView: View {
                 case 12400..<15400:
                     return Color.red
                 case 15400...Int.max:
-                    return Color.purple
+                    return Color("darkRed")
                 default:
                     return Color.gray
                 }
