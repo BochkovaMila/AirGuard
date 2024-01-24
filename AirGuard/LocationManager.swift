@@ -79,11 +79,12 @@ final class LocationManager: NSObject, ObservableObject {
         }
     }
     
-    func getCoordinate(from address: String) {
+    func getCoordinate(from address: String, completion: @escaping ((Double, Double)?) -> Void) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error) in
             if error != nil {
                 print("Failed to retrieve location")
+                completion(nil)
                 return
             }
             
@@ -101,6 +102,7 @@ final class LocationManager: NSObject, ObservableObject {
                         span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
                     )
                 }
+                completion((coordinate.latitude, coordinate.longitude))
             }
             else
             {
@@ -109,10 +111,9 @@ final class LocationManager: NSObject, ObservableObject {
         }
     }
     
-    func lookUpLocation(completion: @escaping (String?) -> Void) {
+    func lookUpLocation(lat: Double, long: Double, completion: @escaping (String?) -> Void) {
         let geocoder = CLGeocoder()
-        print(region.center.latitude)
-        let currentLocation = CLLocation(latitude: region.center.latitude, longitude: region.center.longitude)
+        let currentLocation = CLLocation(latitude: lat, longitude: long)
         
         geocoder.reverseGeocodeLocation(currentLocation, preferredLocale: Locale(components: Locale.Components(languageCode: "ru"))) { (placemarks, error) in
             guard let placemarks = placemarks,

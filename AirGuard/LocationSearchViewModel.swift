@@ -32,11 +32,7 @@ class LocationSearchViewModel: NSObject, ObservableObject {
         guard searchableText.isEmpty == false else { return }
         localSearchCompleter.queryFragment = searchableText
     }
-    
-    func changeLocation(to newAddress: SearchAddressResult) {
-        let addressString = newAddress.title + newAddress.subtitle
-        locationManager.getCoordinate(from: addressString)
-    }
+
 }
 
 extension LocationSearchViewModel: MKLocalSearchCompleterDelegate {

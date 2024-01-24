@@ -20,6 +20,7 @@ struct CurrentDataView: View {
                 VStack {
                     ZStack(alignment: .topTrailing) {
                         Text(viewModel.addressString)
+                            .frame(width: 200, height: 50, alignment: .center)
                             .font(Font.system(size: 34))
                             .scaledToFill()
                             .minimumScaleFactor(0.5)
@@ -39,19 +40,16 @@ struct CurrentDataView: View {
                     }
                     
                     ZStack {
-                        CrescentProgressView(progress: 0.1)
+                        CrescentProgressView(value: viewModel.aqi)
                             .frame(width: 200, height: 200)
                         VStack {
                             HStack {
-                                Text("-1")
+                                Text("\(viewModel.aqi)")
                                     .font(Font.system(size: 28))
                                     .bold()
                                 Text(AirQualityParameters.index.rawValue)
                             }
-                            HStack {
-                                Text("😄")
-                                Text("Отлично")
-                            }
+                            Text(getInterpretationFromAQI(value: viewModel.aqi))
                         }
                         .padding(.top, -30)
                     }
@@ -65,24 +63,24 @@ struct CurrentDataView: View {
                     Group {
                         HStack(spacing: 10) {
                             Group {
-                                VerticalDataView(param: AirQualityParameters.SO2.rawValue, value: 1.1)
-                                VerticalDataView(param: AirQualityParameters.NO2.rawValue, value: 3.6)
+                                VerticalDataView(param: AirQualityParameters.SO2.rawValue, value: viewModel.SO2)
+                                VerticalDataView(param: AirQualityParameters.NO2.rawValue, value: viewModel.NO2)
                             }
                             .padding(.horizontal, 15)
                         }
                         
                         HStack(spacing: 10) {
                             Group {
-                                VerticalDataView(param: AirQualityParameters.PM10.rawValue, value: 1.4)
-                                VerticalDataView(param: AirQualityParameters.PM2.rawValue, value: 0.5)
+                                VerticalDataView(param: AirQualityParameters.PM10.rawValue, value: viewModel.PM10)
+                                VerticalDataView(param: AirQualityParameters.PM2.rawValue, value: viewModel.PM2)
                             }
                             .padding(.horizontal, 15)
                         }
                         
                         HStack(spacing: 10) {
                             Group {
-                                VerticalDataView(param: AirQualityParameters.O3.rawValue, value: 45.8)
-                                VerticalDataView(param: AirQualityParameters.CO.rawValue, value: 283)
+                                VerticalDataView(param: AirQualityParameters.O3.rawValue, value: viewModel.O3)
+                                VerticalDataView(param: AirQualityParameters.CO.rawValue, value: viewModel.CO)
                             }
                             .padding(.horizontal, 15)
                         }
@@ -99,7 +97,7 @@ struct CurrentDataView: View {
             .navigationTitle("Текущее качество воздуха")
             .toolbar {
                 Button {
-                    // show more information about meaning of aq data params
+                    // TODO: - show more information about meaning of aq data params
                 } label: {
                     Image(systemName: "questionmark.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
@@ -107,10 +105,31 @@ struct CurrentDataView: View {
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
                 LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
-                    self.viewModel.addressString = newValue.title
-                    // TODO: - get lat & lon, update AQ
+                    self.viewModel.addressString = newValue.title + "," + newValue.subtitle
+                    self.viewModel.locationManager.getCoordinate(from: viewModel.addressString) { coord in
+                        if let latitude = coord?.0, let longitude = coord?.1 {
+                            self.viewModel.updateUI(with: latitude, long: longitude)
+                        }
+                    }
                 })
             }
+        }
+    }
+    
+    private func getInterpretationFromAQI(value: Int) -> String {
+        switch value {
+        case 1:
+            return "😄 Отлично"
+        case 2:
+            return "😄 Хорошо"
+        case 3:
+            return "🙂 Удовлетворительно"
+        case 4:
+            return "☹️ Плохо"
+        case 5:
+            return "😫 Ужасно"
+        default:
+            return "???"
         }
     }
 }
@@ -122,7 +141,7 @@ struct VerticalDataView: View {
     
     var body: some View {
         HStack {
-            VerticalProgressView(progress: 0.3)
+            VerticalProgressView(param: param, value: value)
                 .frame(width: 25)
                 .padding(.trailing, 3)
             VStack(alignment: .leading) {
