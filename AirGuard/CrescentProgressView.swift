@@ -44,15 +44,15 @@ struct CrescentProgressView: View {
     private func getColorAndProgress(_ value: Int) -> (Color, Double) {
         switch value {
         case 1:
-            return (Color.green, 0.2)
+            return (Color.green, 0.1)
         case 2:
-            return (Color.yellow, 0.4)
+            return (Color.yellow, 0.2)
         case 3:
-            return (Color.orange, 0.6)
+            return (Color.orange, 0.3)
         case 4:
-            return (Color.red, 0.8)
+            return (Color.red, 0.4)
         case 5:
-            return (Color("darkRed"), 0.95)
+            return (Color("darkRed"), 0.5)
         default:
             return (Color.gray, 0.0)
         }
