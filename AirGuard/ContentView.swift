@@ -24,7 +24,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("История", systemImage: "chart.bar.xaxis")
                     }
-                ForecastView()
+                ForecastView(viewModel: ForecastViewModel())
                     .tabItem {
                         Label("Прогноз", systemImage: "chart.line.uptrend.xyaxis")
                     }

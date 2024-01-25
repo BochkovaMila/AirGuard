@@ -8,23 +8,15 @@
 import SwiftUI
 import Charts
 
-struct ViewDay: Identifiable {
-    let id = UUID()
-    let date: Date
-    let value: Double
-}
-
 struct ForecastView: View {
+    
     @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = ForecastViewModel()
     @State var isChangeLocationLinkActive = false
     
-    let viewDays: [ViewDay] = [
-        .init(date: Date.now, value: 0.1),
-        .init(date: Date.now, value: 0.2),
-        .init(date: Date.now, value: 0.3),
-        .init(date: Date.now, value: 0.4)
-    ]
+    var viewDays: [ForecastList] {
+        return viewModel.getDataForDaysChart()
+    }
     
     var body: some View {
         NavigationStack {
@@ -53,17 +45,17 @@ struct ForecastView: View {
                     }
                     
                     Chart {
-                        ForEach(viewDays) { viewDay in
+                        ForEach(viewModel.getDataForDaysChart()) { viewDay in
                             BarMark(
                                 x: .value("Day", viewDay.date, unit: .day),
-                                y: .value("Data", viewDay.value)
+                                y: .value("Data", viewDay.main.aqi)
                             )
                             .foregroundStyle(Color.pink.gradient)
                             .cornerRadius(10)
                         }
                     }
                     .chartXAxis {
-                        AxisMarks(values: viewDays.map { $0.date }) { date in
+                        AxisMarks(values: viewModel.getDataForDaysChart().map { $0.date }) { date in
                             AxisGridLine()
                             AxisTick()
                             AxisValueLabel(format: .dateTime.day(.twoDigits), centered: true)
@@ -99,6 +91,9 @@ struct ForecastView: View {
                     }
                 })
             }
+        }
+        .onAppear {
+            viewModel.updateUI(with: viewModel.locationManager.region.center.latitude, long: viewModel.locationManager.region.center.longitude)
         }
     }
 }

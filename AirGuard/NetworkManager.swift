@@ -38,4 +38,24 @@ class NetworkManager {
             throw AGError.invalidData
         }
     }
+    
+    func getForecastData(latitude: Double, longitude: Double) async throws -> AirQualityData {
+        let endpoint = baseURL + "air_pollution/forecast?lat=\(latitude)&lon=\(longitude)&appid=\(token)"
+        
+        guard let url = URL(string: endpoint) else {
+            throw AGError.invalidToken
+        }
+        
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw AGError.invalidResponse
+        }
+        
+        do {
+            return try decoder.decode(AirQualityData.self, from: data)
+        } catch {
+            throw AGError.invalidData
+        }
+    }
 }
