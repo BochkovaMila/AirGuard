@@ -99,7 +99,7 @@ struct CurrentDataView: View {
                 Button {
                     // TODO: - show more information about meaning of aq data params
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemName: "info.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
             }

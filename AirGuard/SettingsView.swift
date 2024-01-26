@@ -8,11 +8,75 @@
 import SwiftUI
 
 struct SettingsView: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
+    @StateObject var viewModel = CurrentDataViewModel()
+    
+    @State var isMoreInfoLinkActive = false
+    @State var isChangeLocationLinkActive = false
+    
     var body: some View {
-        Text("Hello, World!")
+        NavigationStack {
+            ZStack {
+                Color.accentColor.ignoresSafeArea()
+                
+                VStack(spacing: 20) {
+                    Button {
+                        isChangeLocationLinkActive = true
+                    } label: {
+                        VStack(alignment: .center, spacing: 5) {
+                            Group {
+                                Image(systemName: "mappin.circle.fill")
+                                Text("Изменить местоположение")
+                            }
+                            .fontWeight(.bold)
+                            .font(.title)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                        }
+                    }
+                    .frame(width: 275, height: 275)
+                    .background(colorScheme == .dark ? .black : .white)
+                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                    .padding()
+                    
+                    
+                    Button {
+                        isMoreInfoLinkActive = true
+                    } label: {
+                        VStack(alignment: .center, spacing: 5) {
+                            Group {
+                                Image(systemName: "info.circle.fill")
+                                Text("Больше информации")
+                            }
+                            .fontWeight(.bold)
+                            .font(.title)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
+                        }
+                    }
+                    .frame(width: 275, height: 275)
+                    .background(colorScheme == .dark ? .black : .white)
+                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                    .padding()
+                }
+                .padding()
+                Spacer()
+            }
+            .navigationTitle("Настройки")
+            .navigationDestination(isPresented: $isMoreInfoLinkActive) {
+                MoreInfoView()
+            }
+            .navigationDestination(isPresented: $isChangeLocationLinkActive) {
+                LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
+                    self.viewModel.addressString = newValue.title + "," + newValue.subtitle
+                    self.viewModel.locationManager.getCoordinate(from: viewModel.addressString) { coord in
+                        if let latitude = coord?.0, let longitude = coord?.1 {
+                            self.viewModel.updateUI(with: latitude, long: longitude)
+                        }
+                    }
+                })
+            }
+        }
     }
 }
 
-#Preview {
-    SettingsView()
-}

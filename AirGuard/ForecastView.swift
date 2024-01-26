@@ -14,10 +14,6 @@ struct ForecastView: View {
     @StateObject var viewModel = ForecastViewModel()
     @State var isChangeLocationLinkActive = false
     
-    var viewDays: [ForecastList] {
-        return viewModel.getDataForDaysChart()
-    }
-    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -45,7 +41,7 @@ struct ForecastView: View {
                     }
                     
                     Chart {
-                        ForEach(viewModel.getDataForDaysChart()) { viewDay in
+                        ForEach(viewModel.forecastData) { viewDay in
                             BarMark(
                                 x: .value("Day", viewDay.date, unit: .day),
                                 y: .value("Data", viewDay.main.aqi)
@@ -55,7 +51,7 @@ struct ForecastView: View {
                         }
                     }
                     .chartXAxis {
-                        AxisMarks(values: viewModel.getDataForDaysChart().map { $0.date }) { date in
+                        AxisMarks(values: viewModel.forecastData.map { $0.date }) { date in
                             AxisGridLine()
                             AxisTick()
                             AxisValueLabel(format: .dateTime.day(.twoDigits), centered: true)
@@ -77,7 +73,7 @@ struct ForecastView: View {
                 Button {
                     // TODO: - show more information about meaning of aq data params
                 } label: {
-                    Image(systemName: "questionmark.circle")
+                    Image(systemName: "info.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
             }
@@ -91,9 +87,6 @@ struct ForecastView: View {
                     }
                 })
             }
-        }
-        .onAppear {
-            viewModel.updateUI(with: viewModel.locationManager.region.center.latitude, long: viewModel.locationManager.region.center.longitude)
         }
     }
 }

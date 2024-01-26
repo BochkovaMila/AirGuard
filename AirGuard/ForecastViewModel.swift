@@ -31,10 +31,9 @@ final class ForecastViewModel: ObservableObject {
         updateUI(with: locationManager.region.center.latitude, long: locationManager.region.center.longitude)
     }
     
-    func updateUI(with lat: Double, long: Double) -> [ForecastList] {
-        var forecastList = [ForecastList]()
+    func updateUI(with lat: Double, long: Double) {
         self.fetchForecast(lat: lat, long: long) { forecast in
-            
+            var forecastList = [ForecastList]()
             for item in forecast?.list ?? [] {
                 let forecastItem = ForecastList(
                     date: Date(timeIntervalSince1970: TimeInterval(item.dt)),
@@ -43,11 +42,8 @@ final class ForecastViewModel: ObservableObject {
                 )
                 forecastList.append(forecastItem)
             }
-        }
-        DispatchQueue.main.async {
             self.forecastData = forecastList
         }
-        return forecastList
     }
     
     private func fetchForecast(lat: Double, long: Double, completion: @escaping (AirQualityData?) -> Void) {
@@ -65,20 +61,5 @@ final class ForecastViewModel: ObservableObject {
                 completion(nil)
             }
         }
-    }
-    
-    func getDataForDaysChart() -> [ForecastList] {
-        let forecast = updateUI(with: locationManager.region.center.latitude, long: locationManager.region.center.longitude)
-        
-        print(forecast)
-        
-        var data = [ForecastList]()
-        
-//        data.append(forecast[23])
-//        data.append(forecast[47])
-//        data.append(forecast[71])
-//        data.append(forecast[95])
-        
-        return data
     }
 }

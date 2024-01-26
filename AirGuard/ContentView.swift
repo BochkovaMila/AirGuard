@@ -28,7 +28,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Прогноз", systemImage: "chart.line.uptrend.xyaxis")
                     }
-                SettingsView()
+                SettingsView(viewModel: CurrentDataViewModel())
                     .tabItem {
                         Label("Настройки", systemImage: "gearshape.fill")
                     }
