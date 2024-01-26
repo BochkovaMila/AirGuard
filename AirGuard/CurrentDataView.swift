@@ -12,6 +12,7 @@ struct CurrentDataView: View {
     @Environment(\.colorScheme) var colorScheme
     @StateObject var viewModel = CurrentDataViewModel()
     @State var isChangeLocationLinkActive = false
+    @State var isMoreInfoLinkActive = false
     
     var body: some View {
         NavigationStack {
@@ -97,11 +98,14 @@ struct CurrentDataView: View {
             .navigationTitle("Текущее качество воздуха")
             .toolbar {
                 Button {
-                    // TODO: - show more information about meaning of aq data params
+                    isMoreInfoLinkActive = true
                 } label: {
                     Image(systemName: "info.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
+            }
+            .navigationDestination(isPresented: $isMoreInfoLinkActive) {
+                MoreInfoView()
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
                 LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
