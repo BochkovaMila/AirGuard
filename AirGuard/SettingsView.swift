@@ -19,7 +19,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.accentColor.ignoresSafeArea()
+                Color.clear.ignoresSafeArea()
                 
                 VStack(spacing: 20) {
                     Button {
@@ -36,7 +36,7 @@ struct SettingsView: View {
                         }
                     }
                     .frame(width: 275, height: 275)
-                    .background(colorScheme == .dark ? .black : .white)
+                    .background(.accent)
                     .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                     .padding()
                     
@@ -55,7 +55,7 @@ struct SettingsView: View {
                         }
                     }
                     .frame(width: 275, height: 275)
-                    .background(colorScheme == .dark ? .black : .white)
+                    .background(.accent)
                     .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                     .padding()
                 }
