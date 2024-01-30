@@ -41,29 +41,41 @@ struct ForecastView: View {
                         }
                     }
                     
+                    Text("Индекс (по дням):")
+                        .font(.title2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 20)
+                        .padding(.top, 10)
+                    
+                    let data = viewModel.forecastData.enumerated().filter { (index, element) in
+                        return index % 23 == 0
+                    }.map { (index, element) in
+                        return element
+                    }
+                    
                     Chart {
-                        ForEach(viewModel.forecastData) { viewDay in
+                        ForEach(data) { viewDay in
                             BarMark(
                                 x: .value("Day", viewDay.date, unit: .day),
                                 y: .value("Data", viewDay.main.aqi)
                             )
-                            .foregroundStyle(Color.pink.gradient)
-                            .cornerRadius(10)
+                            .foregroundStyle(
+                                getChartColorForIndex(viewDay.main.aqi)
+                                .gradient
+                            )
                         }
                     }
+                    .chartYScale(domain: 0...5)
                     .chartXAxis {
-                        AxisMarks(values: viewModel.forecastData.map { $0.date }) { date in
-                            AxisGridLine()
-                            AxisTick()
-                            AxisValueLabel(format: .dateTime.day(.twoDigits), centered: true)
+                        AxisMarks(values: data.map { $0.date }) { date in
+                            AxisValueLabel(format: .dateTime.day())
                         }
                     }
                     .chartYAxis {
-                        AxisMarks(position: .leading) { mark in
-                            AxisGridLine()
-                        }
+                        AxisMarks(position: .leading)
                     }
-                    .frame(height: 300)
+                    .frame(height: 200)
+                    .padding()
                     Spacer()
                 }
                 
@@ -91,6 +103,23 @@ struct ForecastView: View {
                     }
                 })
             }
+        }
+    }
+    
+    private func getChartColorForIndex(_ value: Int) -> Color {
+        switch value {
+        case 1:
+            return Color.green
+        case 2:
+            return Color.yellow
+        case 3:
+            return Color.orange
+        case 4:
+            return Color.red
+        case 5:
+            return Color("darkRed")
+        default:
+            return Color.gray
         }
     }
 }
