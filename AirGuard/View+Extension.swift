@@ -11,14 +11,21 @@ extension View {
     func hidden(_ shouldHide: Bool) -> some View {
         opacity(shouldHide ? 0 : 1)
     }
-}
-
-extension View {
-    func animate(using animation: Animation = .easeInOut(duration: 1), _ action: @escaping () -> Void) -> some View {
-        onAppear {
-            withAnimation(animation) {
-                action()
-            }
+    
+    func getChartColorForIndex(_ value: Int) -> Color {
+        switch value {
+        case 1:
+            return Color.green
+        case 2:
+            return Color.yellow
+        case 3:
+            return Color.orange
+        case 4:
+            return Color.red
+        case 5:
+            return Color("darkRed")
+        default:
+            return Color.gray
         }
     }
 }

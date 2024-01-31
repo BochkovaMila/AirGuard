@@ -20,7 +20,7 @@ struct ContentView: View {
                     .tabItem {
                         Label("Карта", systemImage: "map")
                     }
-                StatisticsView()
+                StatisticsView(viewModel: StatisticsViewModel())
                     .tabItem {
                         Label("История", systemImage: "chart.bar.xaxis")
                     }

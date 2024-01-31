@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ForecastList: Codable, Identifiable {
+struct AirQualityList: Codable, Identifiable {
     var id = UUID()
     let date: Date
     let main: Main
@@ -19,7 +19,7 @@ final class ForecastViewModel: ObservableObject {
     @ObservedObject var locationManager = LocationManager()
     
     @Published var addressString = ""
-    @Published var forecastData = [ForecastList]()
+    @Published var forecastData = [AirQualityList]()
 
     
     init() {
@@ -33,9 +33,9 @@ final class ForecastViewModel: ObservableObject {
     
     func updateUI(with lat: Double, long: Double) {
         self.fetchForecast(lat: lat, long: long) { forecast in
-            var forecastList = [ForecastList]()
+            var forecastList = [AirQualityList]()
             for item in forecast?.list ?? [] {
-                let forecastItem = ForecastList(
+                let forecastItem = AirQualityList(
                     date: Date(timeIntervalSince1970: TimeInterval(item.dt)),
                     main: item.main,
                     components: item.components
