@@ -53,7 +53,7 @@ final class CurrentDataViewModel: ObservableObject {
         
         Task {
             do {
-                let aqData = try await NetworkManager.shared.getData(latitude: lat, longitude: long)
+                let aqData = try await NetworkManager.shared.getCurrentData(latitude: lat, longitude: long)
                 completion(aqData)
             } catch {
                 if let agError = error as? AGError {

@@ -78,7 +78,7 @@ final class MapViewModel: ObservableObject {
         
         Task {
             do {
-                let aqData = try await NetworkManager.shared.getData(latitude: latitude, longitude: longitude)
+                let aqData = try await NetworkManager.shared.getCurrentData(latitude: latitude, longitude: longitude)
                 completion(aqData)
             } catch {
                 if let agError = error as? AGError {
