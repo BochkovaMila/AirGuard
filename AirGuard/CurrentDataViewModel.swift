@@ -57,9 +57,13 @@ final class CurrentDataViewModel: ObservableObject {
                 completion(aqData)
             } catch {
                 if let agError = error as? AGError {
-                    print(agError)
+                    let alert = UIAlertController(title: "Не удалось получить данные", message: "\(String(describing: agError.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    self.present(alert)
                 } else {
-                    print(error)
+                    let alert = UIAlertController(title: "Ошибка получения данных", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    self.present(alert)
                 }
                 completion(nil)
             }

@@ -45,6 +45,8 @@ extension LocationSearchViewModel: MKLocalSearchCompleterDelegate {
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
-        print(error)
+        let alert = UIAlertController(title: "Ошибка получения местоположения", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+        self.present(alert)
     }
 }

@@ -35,7 +35,9 @@ final class MapViewModel: ObservableObject {
         search.start { response, error in
             guard let mapItems = response?.mapItems else {
                 if let error = error {
-                    print("Search error: \(error.localizedDescription)")
+                    let alert = UIAlertController(title: "Не удалось найти место", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    self.present(alert)
                 }
                 return
             }
@@ -82,9 +84,13 @@ final class MapViewModel: ObservableObject {
                 completion(aqData)
             } catch {
                 if let agError = error as? AGError {
-                    print(agError)
+                    let alert = UIAlertController(title: "Не удалось получить данные", message: "\(String(describing: agError.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    self.present(alert)
                 } else {
-                    print(error)
+                    let alert = UIAlertController(title: "Ошибка получения данных", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    self.present(alert)
                 }
                 completion(nil)
             }

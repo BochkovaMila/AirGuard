@@ -57,21 +57,21 @@ final class LocationManager: NSObject, ObservableObject {
             locationManager.requestWhenInUseAuthorization()
         case .restricted:
             // Possibly due to active restrictions such as parental controls being in place
-            let alert = UIAlertController(title: "Location Permission Restricted", message: "The app cannot access your location. This is possibly due to active restrictions such as parental controls being in place. Please disable or remove them and enable location permissions in settings.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+            let alert = UIAlertController(title: "Разрешение на определение местоположения ограничено", message: "Приложение не может получить доступ к вашему местоположению. Возможно, это связано с активными ограничениями, такими как родительский контроль. Пожалуйста, отключите или удалите их и включите разрешения на определение местоположения в настройках.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Настройки", style: .default) { _ in
                 // Redirect to Settings app
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
             present(alert)
         
         case .denied:
-            let alert = UIAlertController(title: "Location Permission Denied", message: "Please enable location permissions in settings.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+            let alert = UIAlertController(title: "Разрешение на определение местоположения запрещено", message: "Пожалуйста, включите разрешения на определение местоположения в настройках.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Настройки", style: .default) { _ in
                 // Redirect to Settings app
                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
             })
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
             present(alert)
             
         default:
@@ -83,7 +83,9 @@ final class LocationManager: NSObject, ObservableObject {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error) in
             if error != nil {
-                print("Failed to retrieve location")
+                let alert = UIAlertController(title: "Не удалось получить местоположение", message: "\(String(describing: error?.localizedDescription))", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                self.present(alert)
                 completion(nil)
                 return
             }
@@ -106,7 +108,9 @@ final class LocationManager: NSObject, ObservableObject {
             }
             else
             {
-                print("No Matching Location Found")
+                let alert = UIAlertController(title: "Подходящее местоположение не найдено", message: "\(String(describing: error?.localizedDescription))", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                self.present(alert)
             }
         }
     }
@@ -134,8 +138,9 @@ extension LocationManager: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        // TODO: - handle errors
-        print(error.localizedDescription)
+        let alert = UIAlertController(title: "Ошибка определения местоположения", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+        self.present(alert)
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
