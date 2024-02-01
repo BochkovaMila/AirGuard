@@ -112,7 +112,7 @@ struct CurrentDataView: View {
                     self.viewModel.addressString = newValue.title + "," + newValue.subtitle
                     self.viewModel.locationManager.getCoordinate(from: viewModel.addressString) { coord in
                         if let latitude = coord?.0, let longitude = coord?.1 {
-                            self.viewModel.updateUI(with: latitude, long: longitude)
+                            self.viewModel.updateUI(lat: latitude, lon: longitude)
                         }
                     }
                 })
