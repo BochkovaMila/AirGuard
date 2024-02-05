@@ -12,7 +12,7 @@ struct VerticalProgressView: View {
     let value: Double
     
     var colorAndProgressTuple: (Color, Double) {
-        return getColorAndProgressForSelectedParam(param, value)
+        return getColorAndProgressForSelectedParam()
     }
     
     var body: some View {
@@ -37,7 +37,7 @@ struct VerticalProgressView: View {
         }
     }
     
-    private func getColorAndProgressForSelectedParam(_ param: String, _ value: Double) -> (Color, Double) {
+    func getColorAndProgressForSelectedParam() -> (Color, Double) {
         
         if param == "SO2" {
             switch Int(value) {

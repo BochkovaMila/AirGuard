@@ -12,7 +12,7 @@ struct CrescentProgressView: View {
     let value: Int
     
     var colorAndProgressTuple: (Color, Double) {
-        return getColorAndProgress(value)
+        return getColorAndProgress()
     }
     
     var body: some View {
@@ -41,8 +41,8 @@ struct CrescentProgressView: View {
         }
     }
     
-    private func getColorAndProgress(_ value: Int) -> (Color, Double) {
-        switch value {
+    func getColorAndProgress() -> (Color, Double) {
+        switch self.value {
         case 1:
             return (Color.green, 0.1)
         case 2:

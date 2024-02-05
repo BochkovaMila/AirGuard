@@ -120,7 +120,7 @@ struct CurrentDataView: View {
         }
     }
     
-    private func getInterpretationFromAQI(value: Int) -> String {
+    func getInterpretationFromAQI(value: Int) -> String {
         switch value {
         case 1:
             return "😄 Отлично"

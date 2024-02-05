@@ -40,7 +40,7 @@ struct AirQualityChartView: View {
         .padding()
     }
     
-    private func getChartColorForParam(_ param: String, _ value: Double) -> Color {
+    func getChartColorForParam(_ param: String, _ value: Double) -> Color {
         if param == "SO2" {
             switch Int(value) {
             case 0..<20:
