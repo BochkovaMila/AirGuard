@@ -12,7 +12,7 @@ import CoreLocationUI
 struct MapView: View {
     
     @StateObject var viewModel: MapViewModel
-    @State private var selectedParam: AirQualityParameters = .index
+    @State var selectedParam: AirQualityParameters = .index
     @State private var showingDetails = false
     @State private var pinLocation: CLLocationCoordinate2D? = nil
     
@@ -80,7 +80,7 @@ struct MapView: View {
         }
     }
     
-    private func getColorForSelectedParam(_ point: InfoPoint) -> Color {
+    func getColorForSelectedParam(_ point: InfoPoint) -> Color {
         switch self.selectedParam {
         case .index:
             if let value = point.aqData?.list[0].main.aqi {
@@ -211,7 +211,7 @@ struct MapView: View {
         }
     }
     
-    private func getInfoForSelectedParam(_ point: InfoPoint) -> String {
+    func getInfoForSelectedParam(_ point: InfoPoint) -> String {
         switch self.selectedParam {
         case .index:
             return String(point.aqData?.list[0].main.aqi ?? -1)
