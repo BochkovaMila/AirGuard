@@ -21,6 +21,7 @@ final class MapViewModel: ObservableObject {
     @Published var airQualityData = ""
     @Published var searchResults: [InfoPoint] = []
     @Published var address: String?
+    @Published var selectedParam: AirQualityParameters = .index
     
     func loadAnnotationsByCurrentLocation() {
         let request = MKLocalSearch.Request()

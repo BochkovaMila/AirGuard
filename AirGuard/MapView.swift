@@ -11,8 +11,8 @@ import CoreLocationUI
 
 struct MapView: View {
     
-    @StateObject var viewModel: MapViewModel
-    @State var selectedParam: AirQualityParameters = .index
+    @ObservedObject var viewModel = MapViewModel()
+    
     @State private var showingDetails = false
     @State private var pinLocation: CLLocationCoordinate2D? = nil
     
@@ -48,7 +48,7 @@ struct MapView: View {
                 viewModel.loadAnnotationsByCurrentLocation()
             }
             VStack(alignment: .trailing, spacing: 15) {
-                Picker("Параметр", selection: $selectedParam) {
+                Picker("Параметр", selection: $viewModel.selectedParam) {
                     ForEach(AirQualityParameters.allCases, id: \.self) {
                         Text($0.localizedName)
                             .foregroundStyle(.white)
@@ -81,7 +81,7 @@ struct MapView: View {
     }
     
     func getColorForSelectedParam(_ point: InfoPoint) -> Color {
-        switch self.selectedParam {
+        switch viewModel.selectedParam {
         case .index:
             if let value = point.aqData?.list[0].main.aqi {
                 switch value {
@@ -212,7 +212,7 @@ struct MapView: View {
     }
     
     func getInfoForSelectedParam(_ point: InfoPoint) -> String {
-        switch self.selectedParam {
+        switch viewModel.selectedParam {
         case .index:
             return String(point.aqData?.list[0].main.aqi ?? -1)
         case .SO2:
