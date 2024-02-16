@@ -38,11 +38,13 @@ struct CurrentDataView: View {
                                 .frame(width: 20, height: 20)
                                 .padding(.all, 5)
                         }
+                        .accessibilityIdentifier("ChangeLocationButton")
                     }
                     
                     ZStack {
                         CrescentProgressView(value: viewModel.aqi)
                             .frame(width: 200, height: 200)
+                            .accessibilityIdentifier("AQIProgressView")
                         VStack {
                             HStack {
                                 Text("\(viewModel.aqi)")
@@ -65,7 +67,9 @@ struct CurrentDataView: View {
                         HStack(spacing: 10) {
                             Group {
                                 VerticalDataView(param: AirQualityParameters.SO2.rawValue, value: viewModel.SO2)
+                                    //.accessibilityIdentifier("SO2ProgressView")
                                 VerticalDataView(param: AirQualityParameters.NO2.rawValue, value: viewModel.NO2)
+                                    .accessibilityIdentifier("NO2ProgressView")
                             }
                             .padding(.horizontal, 15)
                         }
@@ -73,7 +77,9 @@ struct CurrentDataView: View {
                         HStack(spacing: 10) {
                             Group {
                                 VerticalDataView(param: AirQualityParameters.PM10.rawValue, value: viewModel.PM10)
+                                    .accessibilityIdentifier("PM10ProgressView")
                                 VerticalDataView(param: AirQualityParameters.PM2.rawValue, value: viewModel.PM2)
+                                    .accessibilityIdentifier("PM2ProgressView")
                             }
                             .padding(.horizontal, 15)
                         }
@@ -81,7 +87,9 @@ struct CurrentDataView: View {
                         HStack(spacing: 10) {
                             Group {
                                 VerticalDataView(param: AirQualityParameters.O3.rawValue, value: viewModel.O3)
+                                    .accessibilityIdentifier("O3ProgressView")
                                 VerticalDataView(param: AirQualityParameters.CO.rawValue, value: viewModel.CO)
+                                    .accessibilityIdentifier("COProgressView")
                             }
                             .padding(.horizontal, 15)
                         }
@@ -103,6 +111,7 @@ struct CurrentDataView: View {
                     Image(systemName: "info.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
+                .accessibilityIdentifier("MoreInfoButton")
             }
             .navigationDestination(isPresented: $isMoreInfoLinkActive) {
                 MoreInfoView()

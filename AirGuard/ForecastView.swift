@@ -39,6 +39,7 @@ struct ForecastView: View {
                                 .frame(width: 20, height: 20)
                                 .padding(.all, 5)
                         }
+                        .accessibilityIdentifier("ForecastChangeLocationButton")
                     }
                     
                     let data = viewModel.forecastData.enumerated().filter { (index, element) in
@@ -65,6 +66,7 @@ struct ForecastView: View {
                             )
                         }
                     }
+                    .accessibilityIdentifier("ForecastIndexChart")
                     .chartYScale(domain: 0...5)
                     .chartXAxis {
                         AxisMarks(values: data.map { $0.date }) { date in
@@ -78,11 +80,17 @@ struct ForecastView: View {
                     .padding()
                     
                     AirQualityChartView(data: data, param: "so2", title: AirQualityParameters.SO2.rawValue)
+                        .accessibilityIdentifier("ForecastSO2Chart")
                     AirQualityChartView(data: data, param: "no2", title: AirQualityParameters.NO2.rawValue)
+                        .accessibilityIdentifier("ForecastNO2Chart")
                     AirQualityChartView(data: data, param: "pm10", title: AirQualityParameters.PM10.rawValue)
+                        .accessibilityIdentifier("ForecastPM10Chart")
                     AirQualityChartView(data: data, param: "pm2_5", title: AirQualityParameters.PM2.rawValue)
+                        .accessibilityIdentifier("ForecastPM2Chart")
                     AirQualityChartView(data: data, param: "o3", title: AirQualityParameters.O3.rawValue)
+                        .accessibilityIdentifier("ForecastO3Chart")
                     AirQualityChartView(data: data, param: "co", title: AirQualityParameters.CO.rawValue)
+                        .accessibilityIdentifier("ForecastCOChart")
                     
                     Spacer()
                 }
@@ -97,9 +105,11 @@ struct ForecastView: View {
                     Image(systemName: "info.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
+                .accessibilityIdentifier("ForecastMoreInfoButton")
             }
             .navigationDestination(isPresented: $isMoreInfoLinkActive) {
                 MoreInfoView()
+                    .accessibilityIdentifier("ForecastMoreInfoView")
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
                 LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
@@ -110,6 +120,7 @@ struct ForecastView: View {
                         }
                     }
                 })
+                .accessibilityIdentifier("ForecastChangeLocationView")
             }
         }
     }

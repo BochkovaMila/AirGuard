@@ -35,6 +35,7 @@ struct SettingsView: View {
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
+                    .accessibilityIdentifier("SettingsChangeLocationButton")
                     .frame(width: 275, height: 275)
                     .background(.accent)
                     .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
@@ -54,6 +55,7 @@ struct SettingsView: View {
                             .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
+                    .accessibilityIdentifier("SettingsMoreInfoButton")
                     .frame(width: 275, height: 275)
                     .background(.accent)
                     .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
@@ -65,6 +67,7 @@ struct SettingsView: View {
             .navigationTitle("Настройки")
             .navigationDestination(isPresented: $isMoreInfoLinkActive) {
                 MoreInfoView()
+                    .accessibilityIdentifier("SettingsMoreInfoView")
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
                 LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
@@ -75,6 +78,7 @@ struct SettingsView: View {
                         }
                     }
                 })
+                .accessibilityIdentifier("SettingsChangeLocationView")
             }
         }
     }

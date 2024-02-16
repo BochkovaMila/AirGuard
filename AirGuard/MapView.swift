@@ -33,10 +33,12 @@ struct MapView: View {
                                 .scaledToFit()
                                 .foregroundStyle(.background)
                         }
+                        .accessibilityIdentifier("InfoPoint")
                     }
                     .sheet(isPresented: $showingDetails) {
                         DetailedInfoView(chosenPoint: point)
                             .presentationDetents([.height(300)])
+                            .accessibilityIdentifier("DetailedInfoView")
                     }
                 }
             }
@@ -55,6 +57,7 @@ struct MapView: View {
                             .fontWeight(.bold)
                     }
                 }
+                .accessibilityIdentifier("PickerView")
                 .pickerStyle(.menu)
                 .frame(width: 120, height: 60)
                 .background(
@@ -67,6 +70,7 @@ struct MapView: View {
                 LocationButton {
                     viewModel.locationManager.requestLocation()
                 }
+                .accessibilityIdentifier("LocationButton")
                 .frame(width: 60, height: 60)
                 .background(
                     RoundedRectangle(cornerRadius: 16)

@@ -49,6 +49,7 @@ struct StatisticsView: View {
                                 .frame(width: 20, height: 20)
                                 .padding(.all, 5)
                         }
+                        .accessibilityIdentifier("StatisticsChangeLocationButton")
                     }
                     
                     Group {
@@ -56,6 +57,7 @@ struct StatisticsView: View {
                                    selection: $viewModel.startDate,
                                    in: dateRange
                         )
+                        .accessibilityIdentifier("StartIntervalPicker")
                         .onReceive(self.viewModel.$startDate) { _ in
                             viewModel.updateUI(lat: viewModel.locationManager.region.center.latitude, lon: viewModel.locationManager.region.center.longitude)
                         }
@@ -64,6 +66,7 @@ struct StatisticsView: View {
                                    selection: $viewModel.endDate,
                                    in: dateRange
                         )
+                        .accessibilityIdentifier("EndIntervalPicker")
                         .onReceive(self.viewModel.$endDate) { _ in
                             viewModel.updateUI(lat: viewModel.locationManager.region.center.latitude, lon: viewModel.locationManager.region.center.longitude)
                         }
@@ -94,6 +97,7 @@ struct StatisticsView: View {
                             )
                         }
                     }
+                    .accessibilityIdentifier("StatisticsIndexChart")
                     .chartYScale(domain: 0...5)
                     .chartXAxis(.automatic)
                     .chartYAxis {
@@ -103,11 +107,17 @@ struct StatisticsView: View {
                     .padding()
                     
                     AirQualityChartView(data: dailyData, param: "so2", title: AirQualityParameters.SO2.rawValue)
+                        .accessibilityIdentifier("StatisticsSO2Chart")
                     AirQualityChartView(data: dailyData, param: "no2", title: AirQualityParameters.NO2.rawValue)
+                        .accessibilityIdentifier("StatisticsNO2Chart")
                     AirQualityChartView(data: dailyData, param: "pm10", title: AirQualityParameters.PM10.rawValue)
+                        .accessibilityIdentifier("StatisticsPM10Chart")
                     AirQualityChartView(data: dailyData, param: "pm2_5", title: AirQualityParameters.PM2.rawValue)
+                        .accessibilityIdentifier("StatisticsPM2Chart")
                     AirQualityChartView(data: dailyData, param: "o3", title: AirQualityParameters.O3.rawValue)
+                        .accessibilityIdentifier("StatisticsO3Chart")
                     AirQualityChartView(data: dailyData, param: "co", title: AirQualityParameters.CO.rawValue)
+                        .accessibilityIdentifier("StatisticsCOChart")
                     
                     Spacer()
                 }
@@ -121,9 +131,11 @@ struct StatisticsView: View {
                     Image(systemName: "info.circle")
                         .foregroundStyle(colorScheme == .dark ? Color.white : Color.black)
                 }
+                .accessibilityIdentifier("StatisticsMoreInfoButton")
             }
             .navigationDestination(isPresented: $isMoreInfoLinkActive) {
                 MoreInfoView()
+                    .accessibilityIdentifier("StatisticsMoreInfoView")
             }
             .navigationDestination(isPresented: $isChangeLocationLinkActive) {
                 LocationSearchView(viewModel: LocationSearchViewModel(), onDismiss: { newValue in
@@ -134,6 +146,7 @@ struct StatisticsView: View {
                         }
                     }
                 })
+                .accessibilityIdentifier("StatisticsChangeLocationView")
             }
         }
     }
