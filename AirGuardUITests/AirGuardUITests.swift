@@ -34,7 +34,7 @@ final class AirGuardUITests: XCTestCase {
         XCTAssertTrue(changeLocationButton.exists)
         changeLocationButton.tap()
         
-        let textField = app.textFields["Введите местоположение"]
+        let textField = app.textFields["Enter location"]
         XCTAssertTrue(textField.exists)
         
         app.keys["M"].tap()
@@ -48,7 +48,7 @@ final class AirGuardUITests: XCTestCase {
         XCTAssertTrue(mumbai.exists)
         mumbai.tap()
         
-        let alert = app.alerts["Изменить местоположение"]
+        let alert = app.alerts["Change location"]
         XCTAssertTrue(alert.waitForExistence(timeout: 3))
         alert.scrollViews.otherElements.buttons["ОК"].tap()
         
@@ -68,13 +68,13 @@ final class AirGuardUITests: XCTestCase {
         
         moreButton.tap()
         
-        let labelText = app.staticTexts["Название"]
+        let labelText = app.staticTexts["Name"]
         XCTAssertTrue(labelText.exists)
     }
     
     func testMapView() throws {
 
-        app.tabBars["Tab Bar"].buttons["Карта"].tap()
+        app.tabBars["Tab Bar"].buttons["Map"].tap()
         
         let picker = app.pickers["PickerView"]
         XCTAssertTrue(picker.exists)
@@ -95,7 +95,7 @@ final class AirGuardUITests: XCTestCase {
     }
     
     func testStatisticsView() {
-        app.tabBars["Tab Bar"].buttons["История"].tap()
+        app.tabBars["Tab Bar"].buttons["Statistics"].tap()
         
         let startDate = app.datePickers["StartIntervalPicker"]
         XCTAssertTrue(startDate.exists)
@@ -142,7 +142,7 @@ final class AirGuardUITests: XCTestCase {
     }
     
     func testForecastView() {
-        app.tabBars["Tab Bar"].buttons["Прогноз"].tap()
+        app.tabBars["Tab Bar"].buttons["Forecast"].tap()
         
         let moreInfoButton = app.buttons["ForecastMoreInfoButton"]
         XCTAssertTrue(moreInfoButton.exists)
@@ -173,7 +173,7 @@ final class AirGuardUITests: XCTestCase {
     }
     
     func testSettingsViewChangeLocation() {
-        app.tabBars["Tab Bar"].buttons["Настройка"].tap()
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
         
         let changeLocationButton = app.buttons["SettingsChangeLocationButton"]
         XCTAssertTrue(changeLocationButton.exists)
@@ -184,7 +184,7 @@ final class AirGuardUITests: XCTestCase {
     }
     
     func testSettingsViewMoreInfo() {
-        app.tabBars["Tab Bar"].buttons["Настройка"].tap()
+        app.tabBars["Tab Bar"].buttons["Settings"].tap()
         
         let moreInfoButton = app.buttons["SettingsMoreInfoButton"]
         XCTAssertTrue(moreInfoButton.exists)

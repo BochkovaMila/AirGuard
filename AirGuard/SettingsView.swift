@@ -28,7 +28,7 @@ struct SettingsView: View {
                         VStack(alignment: .center, spacing: 5) {
                             Group {
                                 Image(systemName: "mappin.circle.fill")
-                                Text("Изменить местоположение")
+                                Text("Change Location")
                             }
                             .fontWeight(.bold)
                             .font(.title)
@@ -48,7 +48,7 @@ struct SettingsView: View {
                         VStack(alignment: .center, spacing: 5) {
                             Group {
                                 Image(systemName: "info.circle.fill")
-                                Text("Больше информации")
+                                Text("More Information")
                             }
                             .fontWeight(.bold)
                             .font(.title)
@@ -64,7 +64,7 @@ struct SettingsView: View {
                 .padding()
                 Spacer()
             }
-            .navigationTitle("Настройки")
+            .navigationTitle("Settings")
             .navigationDestination(isPresented: $isMoreInfoLinkActive) {
                 MoreInfoView()
                     .accessibilityIdentifier("SettingsMoreInfoView")

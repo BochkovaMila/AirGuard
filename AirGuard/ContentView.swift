@@ -13,24 +13,24 @@ struct ContentView: View {
             Group {
                 CurrentDataView(viewModel: CurrentDataViewModel())
                     .tabItem {
-                        Label("Сегодня", systemImage: "chart.xyaxis.line")
+                        Label("Current", systemImage: "chart.xyaxis.line")
                             .foregroundStyle(.black)
                     }
                 MapView(viewModel: MapViewModel())
                     .tabItem {
-                        Label("Карта", systemImage: "map")
+                        Label("Map", systemImage: "map")
                     }
                 StatisticsView(viewModel: StatisticsViewModel())
                     .tabItem {
-                        Label("История", systemImage: "chart.bar.xaxis")
+                        Label("History", systemImage: "chart.bar.xaxis")
                     }
                 ForecastView(viewModel: ForecastViewModel())
                     .tabItem {
-                        Label("Прогноз", systemImage: "chart.line.uptrend.xyaxis")
+                        Label("Forecast", systemImage: "chart.line.uptrend.xyaxis")
                     }
                 SettingsView(viewModel: CurrentDataViewModel())
                     .tabItem {
-                        Label("Настройки", systemImage: "gearshape.fill")
+                        Label("Settings", systemImage: "gearshape.fill")
                     }
             }
             .toolbarBackground(.visible, for: .tabBar)

@@ -36,8 +36,8 @@ final class MapViewModel: ObservableObject {
         search.start { response, error in
             guard let mapItems = response?.mapItems else {
                 if let error = error {
-                    let alert = UIAlertController(title: "Не удалось найти место", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    let alert = UIAlertController(title: "Failed to find the location", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .cancel))
                     self.present(alert)
                 }
                 return
@@ -85,12 +85,12 @@ final class MapViewModel: ObservableObject {
                 completion(aqData)
             } catch {
                 if let agError = error as? AGError {
-                    let alert = UIAlertController(title: "Не удалось получить данные", message: "\(String(describing: agError.localizedDescription))", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    let alert = UIAlertController(title: "Failed to load data", message: "\(String(describing: agError.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .cancel))
                     self.present(alert)
                 } else {
-                    let alert = UIAlertController(title: "Ошибка получения данных", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Закрыть", style: .cancel))
+                    let alert = UIAlertController(title: "Failed to get data", message: "\(String(describing: error.localizedDescription))", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .cancel))
                     self.present(alert)
                 }
                 completion(nil)

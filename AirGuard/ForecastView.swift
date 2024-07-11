@@ -48,7 +48,7 @@ struct ForecastView: View {
                         return element
                     }
                     
-                    Text("Индекс (по дням):")
+                    Text("Index (daily):")
                         .font(.title2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 20)
@@ -97,7 +97,7 @@ struct ForecastView: View {
                 
                 Spacer()
             }
-            .navigationTitle("Прогноз качества воздуха")
+            .navigationTitle("Forecast")
             .toolbar {
                 Button {
                     isMoreInfoLinkActive = true

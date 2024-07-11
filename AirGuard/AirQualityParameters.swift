@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum AirQualityParameters: String, Equatable, CaseIterable {
-    case index  = "Индекс"
+    case index  = "Index"
     case SO2 = "SO2"
     case NO2  = "NO2"
     case PM10 = "PM10"

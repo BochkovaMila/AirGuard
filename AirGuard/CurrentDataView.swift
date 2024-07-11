@@ -57,7 +57,7 @@ struct CurrentDataView: View {
                         .padding(.top, -30)
                     }
                     
-                    Text("Показатели:")
+                    Text("Parameters:")
                         .font(Font.system(size: 28))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 40)
@@ -103,7 +103,7 @@ struct CurrentDataView: View {
                 
                 Spacer()
             }
-            .navigationTitle("Текущее качество воздуха")
+            .navigationTitle("Current Air Quality")
             .toolbar {
                 Button {
                     isMoreInfoLinkActive = true
@@ -132,15 +132,15 @@ struct CurrentDataView: View {
     func getInterpretationFromAQI(value: Int) -> String {
         switch value {
         case 1:
-            return "😄 Отлично"
+            return "😄 Good"
         case 2:
-            return "😄 Хорошо"
+            return "😄 Fair"
         case 3:
-            return "🙂 Удовлетворительно"
+            return "🙂 Moderate"
         case 4:
-            return "☹️ Плохо"
+            return "☹️ Poor"
         case 5:
-            return "😫 Ужасно"
+            return "😫 Very Poor"
         default:
             return "???"
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31102CA82BBD8D61009BDB02 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31102CA72BBD8D61009BDB02 /* PerformanceTests.swift */; };
 		3123A1972B61417200FAF972 /* ForecastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3123A1962B61417100FAF972 /* ForecastViewModel.swift */; };
 		3124C3612AF27B33005C3999 /* AirQualityParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3124C3602AF27B33005C3999 /* AirQualityParameters.swift */; };
 		31365B3A2B692910006A8381 /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31365B392B692910006A8381 /* StatisticsViewModel.swift */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		31102CA72BBD8D61009BDB02 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		3123A1962B61417100FAF972 /* ForecastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastViewModel.swift; sourceTree = "<group>"; };
 		3124C3602AF27B33005C3999 /* AirQualityParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirQualityParameters.swift; sourceTree = "<group>"; };
 		31365B392B692910006A8381 /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
@@ -155,34 +157,34 @@
 		31D1E1BC2ADE9EB8007995DA /* AirGuard */ = {
 			isa = PBXGroup;
 			children = (
-				31A82A0E2B501C660053425C /* CurrentDataView.swift */,
-				31A82A162B516CB70053425C /* CrescentProgressView.swift */,
-				31A82A182B55445B0053425C /* VerticalProgressView.swift */,
-				31D1E1F32ADEC193007995DA /* MapViewModel.swift */,
-				31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */,
-				31A82A0A2B4ED2BB0053425C /* MapView.swift */,
-				31D1E1E72ADE9FD7007995DA /* NetworkManager.swift */,
-				31D1E1F12ADEB53D007995DA /* LocationManager.swift */,
-				31D1E1BD2ADE9EB8007995DA /* AirGuardApp.swift */,
-				31D1E1BF2ADE9EB8007995DA /* ContentView.swift */,
-				31D1E1C12ADE9EBB007995DA /* Assets.xcassets */,
-				31D1E1C32ADE9EBC007995DA /* Preview Content */,
-				31D1E1E92ADE9FEA007995DA /* Constants.swift */,
 				31D1E1EB2ADEA068007995DA /* AGError.swift */,
+				31D1E1BD2ADE9EB8007995DA /* AirGuardApp.swift */,
+				31365B3B2B6A5E9B006A8381 /* AirQualityChartView.swift */,
 				31D1E1ED2ADEA08A007995DA /* AirQualityData.swift */,
 				3124C3602AF27B33005C3999 /* AirQualityParameters.swift */,
-				31BB90712B1C9886004F2B70 /* View+Extension.swift */,
-				31A82A102B501CD00053425C /* StatisticsView.swift */,
-				31A82A122B501CEB0053425C /* ForecastView.swift */,
-				31A82A142B501CFE0053425C /* SettingsView.swift */,
+				31D1E1C12ADE9EBB007995DA /* Assets.xcassets */,
+				31D1E1E92ADE9FEA007995DA /* Constants.swift */,
+				31D1E1BF2ADE9EB8007995DA /* ContentView.swift */,
+				31A82A162B516CB70053425C /* CrescentProgressView.swift */,
+				31A82A0E2B501C660053425C /* CurrentDataView.swift */,
 				31EA328F2B57ED5A00EEF51F /* CurrentDataViewModel.swift */,
+				31BB90732B1CB93E004F2B70 /* DetailedInfoView.swift */,
+				31A82A122B501CEB0053425C /* ForecastView.swift */,
+				3123A1962B61417100FAF972 /* ForecastViewModel.swift */,
+				31D1E1F12ADEB53D007995DA /* LocationManager.swift */,
 				31EA32932B58002900EEF51F /* LocationSearchView.swift */,
 				319CBBDC2B5EA4AA0084E8EC /* LocationSearchViewModel.swift */,
-				3123A1962B61417100FAF972 /* ForecastViewModel.swift */,
+				31A82A0A2B4ED2BB0053425C /* MapView.swift */,
+				31D1E1F32ADEC193007995DA /* MapViewModel.swift */,
 				318F45EC2B63D79E005916FC /* MoreInfoView.swift */,
-				31365B392B692910006A8381 /* StatisticsViewModel.swift */,
-				31365B3B2B6A5E9B006A8381 /* AirQualityChartView.swift */,
+				31D1E1E72ADE9FD7007995DA /* NetworkManager.swift */,
 				31365B3D2B6BB4FC006A8381 /* ObservableObject+Ext.swift */,
+				31D1E1C32ADE9EBC007995DA /* Preview Content */,
+				31A82A142B501CFE0053425C /* SettingsView.swift */,
+				31A82A102B501CD00053425C /* StatisticsView.swift */,
+				31365B392B692910006A8381 /* StatisticsViewModel.swift */,
+				31A82A182B55445B0053425C /* VerticalProgressView.swift */,
+				31BB90712B1C9886004F2B70 /* View+Extension.swift */,
 			);
 			path = AirGuard;
 			sourceTree = "<group>";
@@ -204,6 +206,7 @@
 				3156F95A2B72564800D71DE6 /* MapTests.swift */,
 				3156F95C2B72620400D71DE6 /* NetworkTests.swift */,
 				3156F95E2B726A6A00D71DE6 /* LocationTests.swift */,
+				31102CA72BBD8D61009BDB02 /* PerformanceTests.swift */,
 			);
 			path = AirGuardTests;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31102CA82BBD8D61009BDB02 /* PerformanceTests.swift in Sources */,
 				31D1E1CF2ADE9EBC007995DA /* AirGuardTests.swift in Sources */,
 				3156F9572B71111F00D71DE6 /* ProgressViewsTests.swift in Sources */,
 				3156F95D2B72620500D71DE6 /* NetworkTests.swift in Sources */,
@@ -545,7 +549,7 @@
 				DEVELOPMENT_TEAM = 24Z8S48QJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AirGuard использует местоположение для определения качества воздуха в вашем регионе.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AirGuard uses location to determine the air quality in your area.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -577,7 +581,7 @@
 				DEVELOPMENT_TEAM = 24Z8S48QJ2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AirGuard использует местоположение для определения качества воздуха в вашем регионе.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "AirGuard uses location to determine the air quality in your area.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -9,8 +9,8 @@ import Foundation
 
 enum AGError: String, Error {
     
-    case invalidToken       = "Этот токен создал недопустимый запрос. Пожалуйста, попробуйте снова."
-    case unableToComplete   = "Не удалось выполнить ваш запрос. Пожалуйста, проверьте ваше подключение к Интернету."
-    case invalidResponse    = "Неверный ответ от сервера. Пожалуйста, попробуйте снова."
-    case invalidData        = "Данные, полученные с сервера, оказались недействительными. Пожалуйста, попробуйте снова."
+    case invalidToken       = "This token is invalid. Please try again."
+    case unableToComplete   = "Unable to complete this request. Please check your internet connection."
+    case invalidResponse    = "Invalid response from server. Please try again."
+    case invalidData        = "Invalid data from server. Please try again."
 }

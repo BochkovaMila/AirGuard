@@ -14,7 +14,7 @@ struct DetailedInfoView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 5) {
-                Text("Индекс качества воздуха: \(chosenPoint.aqData?.list[0].main.aqi ?? -1)")
+                Text("Air Quality Index: \(chosenPoint.aqData?.list[0].main.aqi ?? -1)")
                 Text("SO2: \(chosenPoint.aqData?.list[0].components["so2"] ?? -1)")
                 Text("NO2: \(chosenPoint.aqData?.list[0].components["no2"] ?? -1)")
                 Text("PM10: \(chosenPoint.aqData?.list[0].components["pm10"] ?? -1)")

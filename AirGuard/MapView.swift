@@ -50,7 +50,7 @@ struct MapView: View {
                 viewModel.loadAnnotationsByCurrentLocation()
             }
             VStack(alignment: .trailing, spacing: 15) {
-                Picker("Параметр", selection: $viewModel.selectedParam) {
+                Picker("Parameter", selection: $viewModel.selectedParam) {
                     ForEach(AirQualityParameters.allCases, id: \.self) {
                         Text($0.localizedName)
                             .foregroundStyle(.white)

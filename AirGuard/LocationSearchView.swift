@@ -27,7 +27,7 @@ struct LocationSearchView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                 
-                TextField("Введите местоположение", text: $viewModel.searchableText)
+                TextField("Enter location", text: $viewModel.searchableText)
                     .autocorrectionDisabled()
                     .focused($isFocusedTextField)
                     .font(.title3)
@@ -75,8 +75,8 @@ struct LocationSearchView: View {
         }
         .alert(isPresented: $showAlert) {
             Alert(
-                title: Text("Изменить местоположение"),
-                message: Text("Вы уверены, что хотите изменить ваше местоположение?"),
+                title: Text("Change location"),
+                message: Text("Are you sure you want to change your location?"),
                 primaryButton: .cancel(
                     Text("ОК"),
                     action: {
@@ -89,7 +89,7 @@ struct LocationSearchView: View {
                     }
                 ),
                 secondaryButton: .destructive(
-                    Text("Закрыть"),
+                    Text("Close"),
                     action: {
                         showAlert = false
                         chosenLocation = nil
@@ -97,7 +97,7 @@ struct LocationSearchView: View {
                 )
             )
         }
-        .navigationBarTitle("Изменить местоположение")
+        .navigationBarTitle("Change Location")
         .padding()
         Spacer()
     }

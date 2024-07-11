@@ -16,7 +16,7 @@ final class CurrentDataTests: XCTestCase {
         
         let str = currentDataView.getInterpretationFromAQI(value: value)
         
-        XCTAssertEqual(str, "😄 Отлично")
+        XCTAssertEqual(str, "😄 Good")
     }
     
     func testInvalidValueInterpretationFromAQI() {

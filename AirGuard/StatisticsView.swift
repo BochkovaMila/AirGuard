@@ -53,7 +53,7 @@ struct StatisticsView: View {
                     }
                     
                     Group {
-                        DatePicker("Выберите начало интервала:",
+                        DatePicker("Select the start date:",
                                    selection: $viewModel.startDate,
                                    in: dateRange
                         )
@@ -62,7 +62,7 @@ struct StatisticsView: View {
                             viewModel.updateUI(lat: viewModel.locationManager.region.center.latitude, lon: viewModel.locationManager.region.center.longitude)
                         }
                         
-                        DatePicker("Выберите конец интервала:",
+                        DatePicker("Select the end date:",
                                    selection: $viewModel.endDate,
                                    in: dateRange
                         )
@@ -79,7 +79,7 @@ struct StatisticsView: View {
                         return element
                     }
                     
-                    Text("Индекс:")
+                    Text("Index:")
                         .font(.title2)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.leading, 20)
@@ -123,7 +123,7 @@ struct StatisticsView: View {
                 }
                 Spacer()
             }
-            .navigationTitle("Статистика качества воздуха")
+            .navigationTitle("Statistics")
             .toolbar {
                 Button {
                     isMoreInfoLinkActive = true

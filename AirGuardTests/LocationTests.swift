@@ -11,7 +11,7 @@ import XCTest
 final class LocationTests: XCTestCase {
     
     func testGetCoordinate() {
-        LocationManager().getCoordinate(from: "Москва, Зеленоград") { coord in
+        LocationManager().getCoordinate(from: "Zelenograd, Moscow") { coord in
             XCTAssertNotNil(coord)
             XCTAssertTrue(coord!.0 > 55, "Latitude of Zelenograd is 55.9872")
             XCTAssertTrue(coord!.0 < 56, "Latitude of Zelenograd is 55.9872")
